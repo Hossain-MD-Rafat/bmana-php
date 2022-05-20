@@ -1,0 +1,107 @@
+.banner_main{
+     position: relative;
+     overflow: hidden !important;
+    .banner_slider{
+        position: relative;
+        .slick-dots{
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            .slick-active{
+                height:20px;
+                width: 20px;
+                background-color: rgba(0,0,0,0.6);
+            }
+            li{
+                display: inline-block;
+                height: 20px;
+                width: 20px;
+                background-color: $white;
+                margin: 0 5px;
+                border-radius:50% ;
+                -webkit-border-radius:50% ;
+                -moz-border-radius:50% ;
+                -ms-border-radius:50% ;
+                -o-border-radius:50% ;
+                button{
+                    color: transparent;
+}
+            }
+        }
+        .prev{
+            display: none !important;
+        }
+        .next{
+            height: 80px;
+            width: 80px;
+            border: 1px solid transparent;
+            background-color: rgba(0,0,0,0.2);
+            border-radius: 50%;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            -ms-border-radius: 50%;
+            -o-border-radius: 50%;
+            font-size: 50px;
+            color: $white;
+            text-align: center;
+            line-height: 80px;
+            position: absolute;
+            top: 50%;
+            right:10%;
+            transform: translateY(-50%);
+            -webkit-transform: translateY(-50%);
+            -moz-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            -o-transform: translateY(-50%);
+            cursor: pointer;
+    }
+    .banner{
+        height: 100vh;
+        width: 100%;
+        opacity: 100%;
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+        &::after{
+        position: absolute;
+        content: '';
+        top: 0; 
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background-image: url(../images/banner_bg.jpg);
+        opacity: 50%;
+        background-position:center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        z-index: -1;
+        }
+        .banner_wrapper{
+            .banner_wrap{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            -webkit-transform: translate(-50%,-50%);
+            -moz-transform: translate(-50%,-50%);
+            -ms-transform: translate(-50%,-50%);
+            -o-transform: translate(-50%,-50%);
+             .banner_search{
+                 background-color: rgba(0,0,0,0.6);
+                 padding: 20px 30px;
+                 color: $text;
+                 border-radius: 30px;
+                 
+                  h4{
+                      font-size: 40px;
+                      color: $white;
+                      line-height: 48px;
+                  }
+               
+             }
+            }
+     }
+    }  
+    }
+}

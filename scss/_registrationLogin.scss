@@ -1,0 +1,235 @@
+#modal_1{
+    .modal{
+          z-index: 99999999999;
+        .modal-dialog{
+            position: relative;
+            margin: 7.0rem auto;
+            
+              .modal-content{ 
+                    padding: 20px 0 50px 0;
+                    background-color: #fff;
+                    outline: 0;
+                    z-index: 1;
+                    opacity: 1;
+                  .modal-header{
+                    border-bottom: none;
+                    margin: 0 auto;
+                    padding: 0rem 0rem;
+                    .header_info{
+                        margin: 0 auto;
+                    }
+                    h5{
+                        font-size: 28px;
+                        color: $black;  
+                        font-weight: 600;
+                        span{
+                            color: $primaryColor;
+                        }
+                      }
+                    .btn-close{
+                        position: absolute;
+                        right: 20px;
+                        top: 20px;
+                        z-index: 9999;
+                     &:focus {
+                        outline: 0;
+                        box-shadow: 0 0 0 .25rem transparent;
+                        opacity: 1;
+                     }
+                    }
+                     
+                      button{
+                          position: absolute;
+                          top: 20px;
+                          right: 20px;
+                          background-color: white; 
+                          opacity: 1;
+                      }
+                  }
+                  .modal-body{
+                      .header_info{
+                           text-align: center;
+                          img{
+                              width: 80px;
+                          }
+                          h5{
+                              font-size: 24px;
+                              font-family: $font1;
+                              color: $primaryColor;
+                              font-weight: 500;
+                              padding-top: 10px;
+                              line-height:34px ;
+                          }
+                      }
+                    .nav{
+                         justify-content: center;
+                         padding-top: 20px;
+                       .nav-item{
+                           padding: 0 10px;
+                            .nav-link{
+                                 background-color: #bdb9b9;
+                                 color: $black;
+                                 font-size: 16px;
+                                 font-weight: 400;
+                            }
+                            .active{
+                              background-color: $primaryColor;
+                              color: $white;
+                            }
+                       }
+                    }
+                    .tab-content{
+                        .tab-pane {
+                            .signIn_body{
+                                   padding: 0 40px;
+                                     .signin_form{
+                                           form{
+                                               margin: 20px 20px;
+                                         .form_control{
+                                                margin: 0 auto;
+                                                display: block;
+                                                width: 100%;
+                                                height: 50px;
+                                                border: none;
+                                                outline: none;
+                                                background: none;
+                                                padding: 10px 20px;
+                                                font-size: 1rem;
+                                                color: black;
+                                                border: 1px solid #999999;
+                                                border-radius: 5px;
+                                               -webkit-border-radius: 5px;
+                                               -moz-border-radius: 5px;
+                                               -ms-border-radius: 5px;
+                                               -o-border-radius: 5px;
+                                                &::placeholder{
+                                                    font-size: 16px;
+                                                    color: #999999;
+                                                    font-weight: 400;
+                                                }
+                                            }
+                                           }   
+                                           
+                                          .continue_btn{
+                                              margin: 0 20px;
+                                              position: relative;
+                                            a{
+                                                text-align: center;
+                                                line-height: 50px;
+                                                display: block;
+                                                width: 100%;
+                                                height: 50px;
+                                                border: none;
+                                                outline: none;
+                                                background: #f3f3f3;
+                                                font-size: 20px;
+                                                font-weight: 500;
+                                                color: $black;
+                                                border: 1px solid #d4d4d5;
+                                                border-radius: 5px;
+                                               -webkit-border-radius: 5px;
+                                               -moz-border-radius: 5px;
+                                               -ms-border-radius: 5px;
+                                               -o-border-radius: 5px;
+                                             
+                                               img{
+                                                   width: 30px;
+                                                   margin-top: -5px;
+                                               }
+                                               }
+                                          }
+                               }
+                               .forget_setion{
+                                   display: flex;
+                                   align-items: center;
+                                   justify-content: space-between;
+                                   padding: 30px 20px;
+                                   a{
+                                      font-size: 14px;
+                                      font-weight: 500;
+                                      color: $black;        
+                                   }
+                                   span{
+                                    font-size: 14px;
+                                    font-weight: 500;
+                                    color: $black;        
+                                 }
+                               }
+                              } 
+                              .signUp_body{
+                                padding: 0 40px;
+                                  .signUp_form{
+                                        form{
+                                            margin: 20px 20px;
+                                      .form_control{
+                                             margin: 0 auto;
+                                             display: block;
+                                             width: 100%;
+                                             height: 45px;
+                                             border: none;
+                                             outline: none;
+                                             background: none;
+                                             padding: 10px 20px;
+                                             font-size: 1rem;
+                                             color: black;
+                                             border: 1px solid #d4d4d5;
+                                             border-radius: 5px;
+                                            -webkit-border-radius: 5px;
+                                            -moz-border-radius: 5px;
+                                            -ms-border-radius: 5px;
+                                            -o-border-radius: 5px;
+                                             &::placeholder{
+                                                 font-size: 16px;
+                                                 color: #999999;
+                                                 font-weight: 400;
+                                             }
+                                         }
+                                        }   
+                                        
+                                       .continue_btn{
+                                           margin: 0 20px;
+                                         a{
+                                             text-align: center;
+                                             line-height: 50px;
+                                             display: block;
+                                             width: 100%;
+                                             height: 50px;
+                                             border: none;
+                                             outline: none;
+                                             background: #f3f3f3;
+                                             font-size: 20px;
+                                             font-weight: 500;
+                                             color: $black;
+                                             border: 1px solid #d4d4d5;
+                                             border-radius: 5px;
+                                            -webkit-border-radius: 5px;
+                                            -moz-border-radius: 5px;
+                                            -ms-border-radius: 5px;
+                                            -o-border-radius: 5px;
+                                            img{
+                                                width: 30px;
+                                                margin-top: -5px;
+                                            }
+                                            }
+                                       }
+                                       .statement{
+                                           ul{
+                                               li{
+                                                   a{
+                                                       font-size: 15px;
+                                                       font-weight: 400;
+                                                       font-family: $font1;
+                                                       color: $black;
+                                                   }
+                                               }
+                                           }
+                                       }
+                            }
+                           } 
+                        }
+                    }
+                  }
+              }
+        }
+    }
+} 

@@ -1,0 +1,82 @@
+.phySearch{
+      background-image: url(../images/phySearch.png);
+      background-position: top;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+      z-index: 1;
+      &::after{
+        position: absolute;
+        content: '';
+        top: 0; 
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background-color: #006a4e;
+        opacity: 40%;
+        z-index: -1;
+    }
+.phySearch_wrapper{
+    padding: 190px 0 ;
+    .phySearch_wrap{
+        position: absolute;
+        top: 65%;
+        left: 50%;
+        transform: translate(-50%,-65%);
+         .phySearch_search{
+             h4{
+                 font-size: 45px;
+                 color: $white;
+                 font-weight: 600;
+                 line-height: 55px;
+             }
+             form{
+                 display: flex;
+                 position: relative;
+                 margin-top: 20px;
+                 .form_control{
+                   display: block;
+                   width: 700px !important;
+                   height: 60px;
+                   padding:23px;
+                   border-radius: 18px;
+                   background-color:$white;
+                   background-clip: padding-box;
+                   border: 1px solid transparent;
+                   transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+                   -webkit-transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+                   -moz-transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+                   -ms-transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+                   -o-transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+                   &:focus{
+                      outline: 0;
+                  } 
+                   &::placeholder{
+                       font-size: 16px;
+                       color: #848586;
+                       font-weight: 400; 
+                   }
+               } 
+              a{
+                i{
+                    font-size: 30px;
+                    background-color: rgba(255, 255, 255, 0.313);
+                    color: #ffff;
+                    height: 58px;
+                    width: 60px;
+                    border: 1px solid $white;
+                    border-radius: 10px;
+                    -webkit-border-radius: 10px;
+                    -moz-border-radius: 10px;
+                    -ms-border-radius: 10px;
+                    -o-border-radius: 10px;
+                    text-align: center;
+                    line-height: 58px;
+                    margin-left: 10px;
+ }
+              }
+               } 
+         }
+        }
+}
+}

@@ -1,0 +1,161 @@
+.mission{
+    background-image: url(../images/sriti.jpg);
+    background-position:center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: 1;
+    padding: 130px 0;
+    margin-top: -7px;
+    background-attachment: fixed;
+&::after{
+    position: absolute;
+    content: '';
+    top: 0; 
+    left: 0;
+    background-color: #fff;
+    opacity: 50%;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    }
+    .mission_wrapper{
+          .mission_item{
+              padding: 115px 40px;
+              background-color: $white;
+              border-radius: 10px; 
+              border: 2px solid $primaryColor;
+               h4{
+                   font-size: 42px;
+                   font-weight: 500;
+                   color: $primaryColor;
+                   line-height: 60px;
+                   text-transform: uppercase;
+               }
+               p{
+                font-size: 18px;
+                font-weight: 400;
+                color: $black;
+                padding: 30px 0;
+                line-height: 30px
+            }
+            a{
+                @include button;
+            }
+          }
+    }  
+    .card_wrapper{
+        padding-top: 130px;
+        position: relative;
+       .card_slider{
+        .cardPrev{
+            height: 80px;
+            width: 80px;
+            border: 1px solid transparent;
+            background-color: rgba(130, 126, 126, 0.59);
+            border-radius: 50%;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            -ms-border-radius: 50%;
+            -o-border-radius: 50%;
+            font-size: 50px;
+            color: $white;
+            text-align: center;
+            line-height: 80px;
+            position: absolute;
+            top: 50%;
+            z-index: 9999;
+            left:-10%;
+            transform: translateY(-50%);
+            -webkit-transform: translateY(-50%);
+            -moz-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            -o-transform: translateY(-50%);
+            cursor: pointer;
+            &:hover{
+                background-color: rgba(60, 59, 59, 0.59) ;
+            }
+    }
+        .cardNext{
+            height: 80px;
+            width: 80px;
+            border: 1px solid transparent;
+            background-color: rgba(130, 126, 126, 0.59);
+            border-radius: 50%;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            -ms-border-radius: 50%;
+            -o-border-radius: 50%;
+            font-size: 50px;
+            color: $white;
+            text-align: center;
+            line-height: 80px;
+            position: absolute;
+            top: 50%;
+            z-index: 999;
+            right:-10%;
+            transform: translateY(-50%);
+            -webkit-transform: translateY(-50%);
+            -moz-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            -o-transform: translateY(-50%);
+            cursor: pointer;
+            &:hover{
+                background-color: rgba(60, 59, 59, 0.59) ;
+            }
+    }
+        .slider_item{
+            padding: 40px 10px;
+            background-color: $white;
+            border-radius: 10px;
+            border: 2px solid $primaryColor;
+            position: relative;
+            margin: 10px 15px;
+            &::after{
+                position: absolute;
+                content: '';
+                height: 90%;
+                width: 100%;
+                background-color: $primaryColor;
+                bottom: 0;
+                left: -10px;
+                z-index: -1;
+                border-radius: 10px;
+            }
+            .sl_img{
+                img{
+                    height: 340px;
+                    width: 340px;
+                    border-radius: 50%;
+                    border: 5px solid $primaryColor;
+                    margin: 0 auto !important;
+                }
+            }
+             h4{
+                 font-size: 28px;
+                 font-weight: 500;
+                 color: $primaryColor;
+                 padding: 50px 0;
+                 line-height: 38px
+             }
+          a{
+              @include button;
+          }
+        }
+       }
+  }  
+  .portocol{
+       padding-top: 130px;
+      a{
+          padding: 15px 60px;
+          background-color: $primaryColor;
+          color: $white;
+          font-size: 18px;
+          font-weight: 400;
+          border-radius: 5px;
+          span{
+              padding-left: 20px;
+          }
+      }
+  }
+}
