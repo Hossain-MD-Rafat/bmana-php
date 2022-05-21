@@ -76,7 +76,7 @@ curl_close($ch);
                                    <li><a href="index.php"> <span><i class="fa-solid fa-house"></i></span> Home</a></li>
                                    <?php foreach ($main_nav as $key => $item) { ?>
                                         <li>
-                                             <a href="page/?id=<?= $item->id ?>"> <span><i class="fa-solid fa-circle-info"></i></span> <?= $item->menu_name ?>
+                                             <a href="page.php?id=<?= $item->id ?>"> <span><i class="fa-solid fa-circle-info"></i></span> <?= $item->menu_name ?>
                                                   <?php if (count($item->sub_nav) > 0) { ?>
                                                        <span class="droppper"><i class="fa-solid fa-caret-down"></i></span>
                                                   <?php } ?>
@@ -86,7 +86,7 @@ curl_close($ch);
                                                        <?php
                                                        foreach ($item->sub_nav as $key => $sub_nav) {
                                                        ?>
-                                                            <li><a href="page/?id=<?= $sub_nav->id ?>"><?= $sub_nav->menu_name ?></a></li>
+                                                            <li><a href="page.php?id=<?= $sub_nav->id ?>"><?= $sub_nav->menu_name ?></a></li>
                                                        <?php } ?>
                                                   </ul>
                                              <?php } ?>
@@ -156,11 +156,11 @@ curl_close($ch);
                     <div class="row">
 
                          <?php foreach (array_slice($no_position, 0, 3) as $key => $item) { ?>
-                              <div class="col-md-6 col-lg-4 text-center">
+                              <div class="col-md-6 col-lg-4 text-center height-140">
                                    <div class="mission_item">
                                         <h4><?= $item->page_title ?></h4>
-                                        <p><?= strip_tags($item->body_content); ?></p>
-                                        <a href="blog/?id<?= $item->id ?>">Read More</a>
+                                        <p><?= substr(strip_tags($item->body_content), 0, 50); ?></p>
+                                        <a href="page.php?id=<?= $item->id ?>">Read More</a>
                                    </div>
                               </div>
                          <?php } ?>
@@ -176,7 +176,7 @@ curl_close($ch);
                                              <img src="<?= "https://icircles.app/uploads/content/" . $ms_id . "/" . $item->featured_image ?>" alt="">
                                         </div>
                                         <h4><?= $item->page_title ?></h4>
-                                        <a href="">Read More</a>
+                                        <a href="page.php?id=<?= $item->id ?>">Read More</a>
                                    </div>
                               </div>
                          <?php } ?>
@@ -207,20 +207,20 @@ curl_close($ch);
                     </div>
                </div>
                <div class="committe_wrapper">
-                    <div class="row">
+                    <div class="row justify-content-center">
                          <?php foreach ($members as $key => $item) {
-                              if ($item->id == 1) {
+                              if ($item->membership_type_id == 1) {
                          ?><div class="col-sm-6 col-md-4 col-lg-3" data-aos="fade-up-right" data-aos-easing="ease" data-aos-duration="5s">
                                         <div class="committe_wrap">
                                              <div class="profile_img text-center">
                                                   <div class="p_img">
-                                                       <img src="images/profileMAn.png" alt="">
+                                                       <img src=<?= "https://icircles.app/" . $item->thumb ?> alt="">
                                                   </div>
-                                                  <h4><?= $item->designation ?> - <?= $item->firstname . ' ' . $item->lastname ?></h4>
+                                                  <h4><?= $item->designation ?></h4>
                                              </div>
-                                             <div class="profile_info">
-                                                  <h5><?= $item->about_member ?></h5>
-                                                  <h6><?= $item->email ?></h6>
+                                             <div class="profile_info text-center">
+                                                  <h5><?= $item->firstname . ' ' . $item->lastname ?></h5>
+                                                  <h6 style="font-style: italic"><?= $item->speciality ?></h6>
                                              </div>
                                         </div>
                                    </div>
@@ -276,7 +276,7 @@ curl_close($ch);
                                    <div class="resource_wrap">
                                         <div class="top_wrap text-center">
                                              <i class="fa-solid fa-chalkboard-user"></i>
-                                             <h4><?= $item->menu_name ?></h4>
+                                             <h4><a href="page.php?id=<?= $item->id ?>" target="_blank"><?= $item->menu_name ?></a></h4>
                                         </div>
                                         <div class="bottom_wrap">
                                              <p>
@@ -344,7 +344,9 @@ curl_close($ch);
                               <div class="news_imgSlide">
                                    <?php foreach (array_slice($no_position, 6) as $key => $item) { ?>
                                         <div class="news_img">
-                                             <img src=<?= "https://icircles.app/uploads/content/" . $item->microsite_id . "/" . $item->featured_image ?> alt="">
+                                             <a href="<?= "page.php?id=" . $item->id ?>" target="_blank" rel="noopener noreferrer">
+                                                  <img src=<?= "https://icircles.app/uploads/content/" . $item->microsite_id . "/" . $item->featured_image ?> alt="">
+                                             </a>
                                         </div>
                                    <?php } ?>
                               </div>
@@ -410,10 +412,8 @@ curl_close($ch);
                     <div class="donate_site">
                          <div class="row align-items-center">
                               <div class="col-md-6 col-lg-6 text-center">
-                                   <div class="donate_marker">
-                                        <div class="donate_entry"></div>
-                                   </div>
-                                   <a href="#">Donate Here</a>
+
+                                   <a href="https://apps.veem.com/CustomerApp/Pay/bangladeshmedicalassociationofnorthamerica" target="_blank">Donate Here</a>
                               </div>
                               <div class="col-md-6 col-lg-6">
                                    <div class="donate_right">

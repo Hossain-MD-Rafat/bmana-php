@@ -1,0 +1,86 @@
+/*<><><><><><><<><><><><><<><><><><>
+
+Template Name: BMANA
+Template URL : 
+Description  : 
+Author       : Fahim Ahmed
+Author URL   :
+Version      : 1.1.1
+
+<><><><><><><<><><><><><<><><><><>*/
+
+/*----------------------------------
+       HTML  INDEX LIST
+
+01. Header 
+02. Header Part Two
+03. NavOffcan
+04. Banner
+05. SideBar
+06. Mission
+07. Feature
+08. Committee
+09. MamberShip
+10. Resources
+11. Sponsor
+12. News
+14. Convention
+15. Donate
+16. News Latter
+13. BAck to Top
+-------------------------------------*/
+
+/*     Google Font Connections
+-------------------------------------*/
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&family=Roboto:wght@400;500;700&display=swap');
+
+/*      SCSS Pages Connections 
+<><><><<><<><><<><><><><><><<><><><>*/
+
+@import "../scss/common_css/common";
+@import "../scss/mixin_scss/mixin";
+@import "../scss/variable_scss/variable";
+
+
+
+/*     SCSS Sections Connections 
+<><><><<><<><><<><><><><><><<><><><>*/
+
+@import "../scss/header";
+@import "../scss/headerPartTwo";
+@import "../scss/navOffcan";
+@import "../scss/banner";
+@import "../scss/sideBar"; 
+@import "../scss/mission";
+@import "../scss/feature";
+@import "../scss/committe";
+@import "../scss/mambership";
+@import "../scss/rescource";
+@import "../scss/sponsor";
+@import "../scss/news";
+@import "../scss/convention";
+@import "../scss/donate";
+@import "../scss/newsletter"; 
+@import "../scss/copyright";
+@import "../scss/registrationLogin";
+@import "../scss/backtoTop";
+
+// SubPage COnnector
+
+// about Pages 
+// ------------
+@import "../scss/aboutSub/subPageHeader"; 
+@import "../scss/aboutSub/phySearch";
+@import "../scss/aboutSub/mainAbout";
+@import "../scss/aboutSub/pageMap"; 
+
+// ContactPAge   
+@import "../scss/contactSub/mainContact";  
+
+// MamberShip Sub Page
+@import "../scss/mamberSub/mambershipSub";  
+
+
+

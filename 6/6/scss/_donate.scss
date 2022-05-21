@@ -1,0 +1,95 @@
+.donate_banner{
+    .section_header{
+        background-color: $white;
+        padding: 50px 0;
+        h4{
+            display: inline-block;
+            font-size: 35px;
+            font-weight: 500;
+            color: $primaryColor;
+            border-bottom: 2px solid $primaryColor;
+            padding: 20px 0; 
+            line-height: 40px;
+        }
+    }
+}
+.donate{
+    background-image: url(../images/donate_bg.png); 
+    background-position:center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: 1;
+    padding: 130px 0;
+    background-attachment: fixed;
+&::after{
+    position: absolute;
+    content: '';
+    top: 0; 
+    left: 0;
+    background-color: rgba(0,0,0,0.8);
+    opacity: 50%;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    }
+    .donate_wrapper{
+        padding: 40px 30px 80px 30px;
+        background-color: rgba(255, 255, 255, 0.723);
+        border-radius: 10px;
+          .donate_textWrap{
+                 h3{
+                    font-size: 32px;
+                    font-weight: 600;
+                    color: $primaryColor;
+                    line-height: 48px;
+                 }
+                 p{
+                    font-size: 20px;
+                    font-weight: 400;
+                    color: $black;
+                    line-height: 32px; 
+                    padding-top: 10px;
+                 }
+          }
+          .donate_site{
+              padding-top: 20px;
+             .donate_marker{
+                padding: 7px 35px;
+                display: inline-block;
+                 background-color: $primaryColor;
+                 border-radius: 5px;
+                 margin: 40px 0;
+                 .donate_entry{
+                     padding: 4px 80px;
+                     background-color: #0b3428;
+                     border-radius: 2px;
+                 }
+             }
+              a{
+                  padding: 18px 180px;
+                  background-color: $primaryColor;
+                  font-size: 22px;
+                  font-weight: 500;
+                  color: $white;
+                  border-radius: 30px;
+              }
+              .donate_right{
+                  border-left: 2px solid $primaryColor;
+                  padding-left:20px ;
+                  h4{
+                    font-size: 24px;
+                    font-weight: 500;
+                    color: $primaryColor;
+                  }
+                  ul{
+                      li{
+                        font-size: 18px;
+                        font-weight: 400;
+                        color: $black; 
+                      }
+                  }
+              }
+          }
+    }
+}

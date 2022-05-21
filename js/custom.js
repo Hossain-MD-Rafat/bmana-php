@@ -181,6 +181,13 @@ link.click(function(e) {
   list.slideToggle(200);
 }); 
 
+var list0 = $('.js-dropdown-list0');
+var link0 = $('.js-link0');
+link0.click(function(e) {
+  e.preventDefault();
+  list0.slideToggle(200);
+}); 
+
 var list1 = $('.js-dropdown-list1');
 var link1 = $('.js-link1');
 link1.click(function(e) {
@@ -212,7 +219,8 @@ var link5 = $('.js-link5');
 link5.click(function(e) {
   e.preventDefault();
   list5.slideToggle(200);
-}); var list6 = $('.js-dropdown-list6');
+}); 
+var list6 = $('.js-dropdown-list6');
 var link6 = $('.js-link6');
 link6.click(function(e) {
   e.preventDefault();

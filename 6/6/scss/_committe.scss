@@ -1,0 +1,95 @@
+.committe{
+    background-image: url(../images/commete_bg.png);
+    background-position:center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: 1;
+    padding: 100px 0;
+    background-attachment: fixed;
+&::after{
+    position: absolute;
+    content: '';
+    top: 0; 
+    left: 0;
+    background-color: rgba(0,0,0,0.5);
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    }
+      .section_header{
+          h4{
+              display: inline-block;
+              font-size: 40px;
+              font-weight: 500;
+              color: $white;
+              border-bottom: 2px solid $white;
+              padding: 20px 0;
+              line-height: 60px;
+          }
+      }
+      .committe_wrapper{
+             .committe_wrap{
+                 margin-top: 40px;
+                 cursor: pointer;
+                 &:hover .profile_img .p_img::after{
+                    top: 0px;
+                 }
+                 &:hover{
+                    margin-top: 10px;
+                    transition: all linear .3s;
+                 }
+                   .profile_img{
+                       background-color: #fff;
+                       padding: 20px 20px 10px 20px;
+                       border-top-left-radius: 15px;
+                       border-top-right-radius: 15px;
+                    .p_img{
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 50%;
+                        position: relative;
+                        z-index: 1;
+                        &::after{
+                            position: absolute;
+                            content: '';
+                            height: 100%;
+                            width: 100%;
+                            top: -10px;
+                            left: 0;
+                            background-color: $primaryColor;
+                            border-radius: 50%;
+                            z-index: -1;
+                          }
+                        img{
+                            width: 100%;
+                            border-radius: 50%;
+                        }
+                    }
+                       h4{
+                        font-size: 24px;
+                        font-weight: 500;
+                        color: $primaryColor;
+                        padding-top:10px;
+                       }
+                   }
+                   .profile_info{
+                       background-color: $primaryColor;
+                       padding:10px 20px;
+                       border-bottom-left-radius: 15px;
+                       border-bottom-right-radius: 15px;
+                       h5{
+                        font-size: 18px;
+                        font-weight: 400;
+                        color: $white;
+                        padding-top:10px;  
+                       }
+                       h6{
+                        font-size: 15px;
+                        font-weight: 400;
+                        color: $white;
+                       }
+                   }
+             }
+      }
+}

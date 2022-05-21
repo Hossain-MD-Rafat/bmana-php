@@ -1,0 +1,119 @@
+.sideBar{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    z-index: 9999999; 
+    transform: translateY(-50%);
+    animation: sideAnime .9s; 
+     .sideBar_wrapper{
+            .sideBar_contain{
+                width: 350px;
+                background-color:  rgba(255, 255, 255, 0.642);
+                opacity: 100%;
+                padding: 20px 10px 120px 10px;
+                border-radius: 20px; 
+                box-shadow: 1px 1.732px 20px 0px rgba(0,0,0,0.3);   
+                .logo{
+                    img{
+                        width: 120px;
+                    }
+                }
+                .login_btn{ 
+                    padding-top:30px;
+                    a{
+                        padding: 13px 30px;
+                        background-color: $primaryColor;
+                        font-size: 18px;
+                        color: $white;
+                        font-weight: 500;
+                        border-radius: 20px;
+                        span{
+                            padding-right: 10px;
+                            
+                        }
+                    }
+                }
+                .nav_list{
+                    padding-top: 40px;
+                    ul{
+                        li{
+                            padding: 15px 10px;
+                            border-top: 1px solid $black;
+                            cursor: pointer;
+                            position: relative;
+                            &:hover{
+                                background-color: $primaryColor;
+                            }
+                            &:hover a{ 
+                               color: $white;
+                            }
+                            &:hover .sub_down{
+                                top: 0;
+                                opacity: 1;
+                                margin-top: 0;
+                                visibility: visible;
+                                padding: 10px 10px 10px 10px;
+                            }
+
+                            a{
+                                font-size: 19px;
+                                color: #333;
+                                font-weight: 400;
+                                span{
+                                    padding-right: 10px; 
+                                    font-size: 21px;
+                                } 
+                                .droppper{
+                                    font-size: 24px;
+                                    position: absolute;
+                                    right: 0;
+                                }
+                                
+                            }
+                            .sub_down{
+                                background-color: $white;
+                                padding: 10px 10px 10px 10px;
+                                box-shadow: 1px 1.732px 20px 0px rgba(0,0,0,0.3);   
+                                -webkit-transition: all 0.3s ease-in-out;
+                                transition: all 0.3s ease-in-out;
+                                position: absolute;
+                                visibility: hidden;
+                                display: block;
+                                width: 250px;
+                                border: none !important;
+                                opacity: 0;
+                                top: 70px;
+                                right: -265px;
+                                padding: 0;
+                                z-index: 9999999;
+                              li{
+                                   padding: 10px 10px;
+                                   border: 1px solid transparent;
+                                   &:hover{
+                                       background-color: $primaryColor;
+                                   } 
+                                   &:hover a{
+                                    color: $white ; 
+                                } 
+                                  a{
+                                    font-size: 18px;
+                                    color: $black;
+                                    font-weight: 400;
+                                  }
+                              }
+                         }
+                        }
+                    }
+                }
+            }
+          
+     }
+}
+.sideNewClass{
+    z-index: -11;
+}
+
+@keyframes sideAnime {
+    0%   {left: -350px;}
+    100% {left: 0px;}
+}

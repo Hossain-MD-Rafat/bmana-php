@@ -13,11 +13,13 @@
     <link rel="stylesheet" href="css/slick.css">
     <link rel="stylesheet" href="css/style.min.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
 
 <body>
 
     <?php
+    session_start();
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, 'https://icircles.app/api/medicalassociation/home/166');
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -25,6 +27,8 @@
     $result = json_decode($response);
     curl_close($ch);
     $main_nav = $result->data->main_nav;
+    $ms_id = $result->data->ms_id;
+    $_SESSION['ms_id'] = $ms_id;
     ?>
 
 
@@ -77,9 +81,9 @@
 
                                     <div class="nav_list">
                                         <ul>
-                                            <li><a href="index.html"> <span><i class="fa-solid fa-house"></i></span> Home</a></li>
+                                            <li><a href="index.php"> <span><i class="fa-solid fa-house"></i></span> Home</a></li>
                                             <?php foreach ($main_nav as $key => $item) { ?>
-                                                <li><a href="about.html"> <span><i class="fa-solid fa-circle-info"></i></span> <?= $item->menu_name ?>
+                                                <li><a href=<?= "page.php?id=" . $item->id ?>> <span><i class="fa-solid fa-circle-info"></i></span> <?= $item->menu_name ?>
                                                         <?php if (count($item->sub_nav) > 0) { ?>
                                                             <span class="droppper"><i class="fa-solid fa-caret-down"></i></span>
                                                         <?php } ?>
@@ -89,13 +93,13 @@
                                                             <?php
                                                             foreach ($item->sub_nav as $key => $sub_nav) {
                                                             ?>
-                                                                <li><a href="page/?id=<?= $sub_nav->id ?>"><?= $sub_nav->menu_name ?></a></li>
+                                                                <li><a href="page.php?id=<?= $sub_nav->id ?>"><?= $sub_nav->menu_name ?></a></li>
                                                             <?php } ?>
                                                         </ul>
                                                     <?php } ?>
                                                 </li>
                                             <?php } ?>
-                                            <li><a href="contact.html"> <span><i class="fa-solid fa-phone"></i></span> Contact Us</a></li>
+                                            <li><a href="contact.php"> <span><i class="fa-solid fa-phone"></i></span> Contact Us</a></li>
                                         </ul>
                                     </div>
                                     <div class="login_btn text-center">
@@ -131,80 +135,31 @@
                 <div class="offcanvas-body">
                     <div class="nav_list">
                         <div class="dropdown">
-                            <a href="#">Home</a>
+                            <a href="index.php">Home</a>
                         </div>
                     </div>
-                    <div class="nav_list">
-                        <div class="dropdown">
-                            <a href="#" class="js-link1">About Us<i class="fa fa-chevron-down"></i></a>
-                            <ul class="js-dropdown-list1">
-                                <li><a href="#">About BMANA</a></li>
-                                <li><a href="#">Mission and Vision</a></li>
-                                <li><a href="#">President’s Message</a></li>
-                                <li><a href="#">Executive Committee</a></li>
-                                <li><a href="#">Honorees</a></li>
-                                <li><a href="#">BMANA Alliance</a></li>
-                                <li><a href="#">BMANA Constitution</a></li>
-                            </ul>
+                    <?php foreach ($main_nav as $key => $item) { ?>
+                        <div class="nav_list">
+                            <div class="dropdown">
+                                <a href="#" class=<?= "js-link" . $key; ?>>
+                                    <?= $item->menu_name ?>
+                                    <?php if (count($item->sub_nav) > 0) { ?>
+                                        <i class="fa fa-chevron-down"></i>
+                                    <?php } ?>
+                                </a>
+                                <?php if (count($item->sub_nav) > 0) { ?>
+                                    <ul class=<?= "js-dropdown-list" . $key; ?>>
+                                        <?php foreach ($item->sub_nav as $key => $sub_nav) { ?>
+                                            <li><a href=<?= "page.php?id=" . $sub_nav->id ?>><?= $sub_nav->menu_name ?></a></li>
+                                        <?php } ?>
+                                    </ul>
+                                <?php } ?>
+                            </div>
                         </div>
-                    </div>
+                    <?php } ?>
                     <div class="nav_list">
                         <div class="dropdown">
-                            <a href="#" class="js-link2">Mambership<i class="fa fa-chevron-down"></i></a>
-                            <ul class="js-dropdown-list2">
-                                <li><a href="#">About BMANA</a></li>
-                                <li><a href="#">Mission and Vision</a></li>
-                                <li><a href="#">President’s Message</a></li>
-                                <li><a href="#">Executive Committee</a></li>
-                                <li><a href="#">Honorees</a></li>
-                                <li><a href="#">BMANA Alliance</a></li>
-                                <li><a href="#">BMANA Constitution</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="nav_list">
-                        <div class="dropdown">
-                            <a href="#" class="js-link3">Media <i class="fa fa-chevron-down"></i></a>
-                            <ul class="js-dropdown-list3">
-                                <li><a href="#">About BMANA</a></li>
-                                <li><a href="#">Mission and Vision</a></li>
-                                <li><a href="#">President’s Message</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="nav_list">
-                        <div class="dropdown">
-                            <a href="#" class="js-link4">Events<i class="fa fa-chevron-down"></i></a>
-                            <ul class="js-dropdown-list4">
-                                <li><a href="#">About BMANA</a></li>
-                                <li><a href="#">Mission and Vision</a></li>
-                                <li><a href="#">President’s Message</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="nav_list">
-                        <div class="dropdown">
-                            <a href="#" class="js-link5">Resources <i class="fa fa-chevron-down"></i></a>
-                            <ul class="js-dropdown-list5">
-                                <li><a href="#">About BMANA</a></li>
-                                <li><a href="#">Mission and Vision</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="nav_list">
-                        <div class="dropdown">
-                            <a href="#" class="js-link6">Chapters <i class="fa fa-chevron-down"></i></a>
-                            <ul class="js-dropdown-list6">
-                                <li><a href="#">About BMANA</a></li>
-                                <li><a href="#">Mission and Vision</a></li>
-                                <li><a href="#">President’s Message</a></li>
-                                <li><a href="#">Executive Committee</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="nav_list">
-                        <div class="dropdown">
-                            <a href="#">Contact Us</a>
+                            <a href="contact.php">Contact Us</a>
                         </div>
                     </div>
                 </div>
