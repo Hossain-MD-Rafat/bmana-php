@@ -77,22 +77,19 @@ $foot_nav = $result->data->foot_nav;
                                                     <div class="signin_form">
                                                         <div class="row">
                                                             <div class="col-lg-12">
-                                                                <form action="#">
-                                                                    <input type="text" class="form_control" placeholder="Email / Username">
-                                                                </form>
+                                                                <form onsubmit="login()">
+                                                                    <input type="text" class="form_control" id="email" placeholder="Email / Username">
+                                                                    <input type="password" id="pass" class="form_control mt-3" placeholder="Password">
+                                                                    <div class="continue_btn">
+                                                                        <button type="submit"> <img src="images/logo.png" alt="">
+                                                                            Log In</button>
+                                                                    </div>
+                                                                    <div class="forget_setion">
+                                                                        <span><input type="checkbox" id="remember"> Remember Me</span>
 
-                                                                <form action="#">
-                                                                    <input type="password" class="form_control" placeholder="Password">
+                                                                        <a href="#" style="color:#0069cf;">Forgot Password</a>
+                                                                    </div>
                                                                 </form>
-                                                                <div class="continue_btn">
-                                                                    <a href="#"> <img src="images/logo.png" alt="">
-                                                                        Log In</a>
-                                                                </div>
-                                                                <div class="forget_setion">
-                                                                    <span><input type="checkbox"> Remember Me</span>
-
-                                                                    <a href="#" style="color:#0069cf;">Forgot Password</a>
-                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -106,55 +103,35 @@ $foot_nav = $result->data->foot_nav;
                                             <div class="signUp_form">
                                                 <div class="row">
                                                     <div class="col-lg-12">
-                                                        <form action="#" class="d-flex">
-                                                            <input type="text" style="margin-right: 10px; " class="form_control" placeholder="First Name">
+                                                        <form onsubmit="registration()">
+                                                            <input type="text" class="form_control" placeholder="First Name">
                                                             <input type="text" class="form_control" placeholder="Last Name">
+                                                            <input type="text" class="form_control" placeholder="Home Address">
+                                                            <input type="text" class="form_control" placeholder="Office Address">
+                                                            <input type="text" class="form_control" placeholder="Faculty Affiliations & Speciations">
+                                                            <input type="text" class="form_control" placeholder="Telephone">
+                                                            <input type="text" class="form_control" placeholder="Call">
+                                                            <input type="text" class="form_control" placeholder="E-mail">
+                                                            <input type="text" class="form_control" placeholder="Medical School">
+                                                            <input type="text" class="form_control" placeholder="State of Medical Licensure">
+                                                            <input type="text" class="form_control" placeholder="License">
+                                                            <input type="text" class="form_control" placeholder="Date">
+                                                            <div class="statement">
+                                                                <ul>
+                                                                    <li><a href="#">
+                                                                            <input type="checkbox">
+                                                                            To The Best of my knowledge, the information is the correct status of my professional activity.
+
+                                                                        </a></li>
+                                                                    <li><a href="#">
+                                                                            <input type="checkbox">
+                                                                            I agree to disclose above information's for BMANA membership registry & publication.
+
+                                                                        </a></li>
+                                                                </ul>
+                                                            </div>
                                                         </form>
 
-                                                        <form action="#">
-                                                            <input type="text" class="form_control" placeholder="Home Address">
-                                                        </form>
-                                                        <form action="#">
-                                                            <input type="text" class="form_control" placeholder="Office Address">
-                                                        </form>
-                                                        <form action="#">
-                                                            <input type="text" class="form_control" placeholder="Faculty Affiliations & Speciations">
-                                                        </form>
-                                                        <form action="#">
-                                                            <input type="text" class="form_control" placeholder="Telephone">
-                                                        </form>
-                                                        <form action="#">
-                                                            <input type="text" class="form_control" placeholder="Call">
-                                                        </form>
-                                                        <form action="#">
-                                                            <input type="text" class="form_control" placeholder="E-mail">
-                                                        </form>
-                                                        <form action="#">
-                                                            <input type="text" class="form_control" placeholder="Medical School">
-                                                        </form>
-                                                        <form action="#">
-                                                            <input type="text" class="form_control" placeholder="State of Medical Licensure">
-                                                        </form>
-                                                        <form action="#">
-                                                            <input type="text" class="form_control" placeholder="License">
-                                                        </form>
-                                                        <form action="#">
-                                                            <input type="text" class="form_control" placeholder="Date">
-                                                        </form>
-                                                        <div class="statement">
-                                                            <ul>
-                                                                <li><a href="#">
-                                                                        <form action="#"><input type="checkbox">
-                                                                            To The Best of my knowledge, the information is the correct status of my professional activity.
-                                                                        </form>
-                                                                    </a></li>
-                                                                <li><a href="#">
-                                                                        <form action="#"><input type="checkbox">
-                                                                            I agree to disclose above information's for BMANA membership registry & publication.
-                                                                        </form>
-                                                                    </a></li>
-                                                            </ul>
-                                                        </div>
                                                         <div class="continue_btn">
                                                             <a href="#"> <img src="images/logo.png" alt="">
                                                                 Registration</a>
@@ -195,3 +172,30 @@ $foot_nav = $result->data->foot_nav;
 </body>
 
 </html>
+
+
+<script>
+    function login() {
+        event.preventDefault();
+        const data = new FormData();
+        data.append('email', $('#email').val());
+        data.append('pass', $('#pass').val());
+        data.append('remember', $('#remember').is(':checked') ? 1 : 0);
+        data.append('submit', 1);
+        $.ajax({
+            url: "auth.php",
+            method: 'post',
+            processData: false,
+            contentType: false,
+            cache: false,
+            data: data,
+            success: function(res) {
+                res = JSON.parse(res);
+                console.log(res);
+            },
+            error: function() {
+
+            }
+        });
+    }
+</script>

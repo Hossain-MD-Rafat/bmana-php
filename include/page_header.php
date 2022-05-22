@@ -27,6 +27,7 @@
     $result = json_decode($response);
     curl_close($ch);
     $main_nav = $result->data->main_nav;
+    $ms_info = $result->data->ms_info;
     $ms_id = $result->data->ms_id;
     $_SESSION['ms_id'] = $ms_id;
     ?>
@@ -163,7 +164,7 @@
                                         <div class="member-search">
                                             <ul id="search-result" class="d-none">
                                             </ul>
-                                            <input id="search_key" class="form_control" input="searchMembers(<?= $ms_id; ?>)" type="text" placeholder="SEARCH BMANA PHYSICIAN">
+                                            <input id="search_key" class="form_control" oninput="searchMembers(<?= $ms_id; ?>)" type="text" placeholder="SEARCH BMANA PHYSICIAN">
                                             <a onclick="searchMembers(<?= $ms_id; ?>)"> <i class="fa-solid fa-magnifying-glass"></i></a>
                                         </div>
                                     </form>
@@ -183,6 +184,12 @@
 
 
         function searchMembers(ms_id) {
+            if ($('#search_key').val().length < 2) {
+                $('#search-result').empty();
+                $('#search-result').removeClass('d-block');
+                $('#search-result').addClass('d-none');
+                return;
+            }
             const targetTXT = new RegExp(str + $('#search_key').val() + str, "gi");
             event.preventDefault();
             if (!data) {
@@ -192,27 +199,40 @@
                     success: function(res) {
                         let resData = JSON.parse(res);
                         data = resData.data;
-                        let hs;
+                        let hs = ``;
                         data.map((item) => {
                             if ((item.firstname + " " + item.lastname).match(targetTXT)) {
                                 hs += `<li><a href="member.php?id=${item.id}">${item.firstname}</a></li>`
                             }
                         })
-                        $('#search-result').empty().append(hs);
-                        $('#search-result').toggleClass('d-none d-block');
+                        if (hs.length > 5) {
+                            $('#search-result').empty().append(hs);
+                            $('#search-result').removeClass('d-none');
+                            $('#search-result').addClass('d-block');
+                        } else {
+                            $('#search-result').empty();
+                            $('#search-result').removeClass('d-block');
+                            $('#search-result').addClass('d-none');
+                        }
                     }
                 });
             } else {
-                let hs;
+                let hs = ``;
                 data.map((item) => {
                     if ((item.firstname + " " + item.lastname).match(targetTXT)) {
                         hs += `<li><a href="member.php?id=${item.id}">${item.firstname}</a></li>`
                     }
                 })
-                $('#search-result').empty().append(hs);
-                $('#search-result').toggleClass('d-none d-block');
+                if (hs.length > 5) {
+                    $('#search-result').empty().append(hs);
+                    $('#search-result').removeClass('d-none');
+                    $('#search-result').addClass('d-block');
+                } else {
+                    $('#search-result').empty();
+                    $('#search-result').removeClass('d-block');
+                    $('#search-result').addClass('d-none');
+                }
+
             }
-
-
         }
     </script>

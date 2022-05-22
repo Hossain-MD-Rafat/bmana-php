@@ -40,8 +40,14 @@ curl_close($ch);
                               <div class="banner_wrapper">
                                    <div class="row">
                                         <div class="col-lg-10">
-                                             <div class="banner_wrap">
+                                             <div class="banner_text_wrap">
+                                                  <div class="phySearch_search">
+
+
+                                                  </div>
+
                                                   <div class="banner_search" data-aos="fade-up-left" data-aos-easing="ease" data-aos-duration="5s">
+
                                                        <h4><?= $item->title ?></h4>
                                                        <h5><?= $item->description ?></h5>
                                                   </div>
@@ -53,6 +59,27 @@ curl_close($ch);
                     </div>
                <?php } ?>
           </div>
+          <div class="container">
+               <div class="banner_wrapper">
+                    <div class="row">
+                         <div class="col-lg-10">
+                              <div class="banner_wrap">
+                                   <div class="banner_search" data-aos="fade-up-left" data-aos-easing="ease" data-aos-duration="5s">
+                                        <form action="#" onsubmit="searchMembers(<?= $ms_id; ?>)">
+                                             <div class="member-search">
+                                                  <ul id="search-result" class="d-none">
+                                                  </ul>
+                                                  <input id="search_key" class="form_control" oninput="searchMembers(<?= $ms_id; ?>)" type="text" placeholder="SEARCH BMANA PHYSICIAN">
+                                                  <a onclick="searchMembers(<?= $ms_id; ?>)"> <i class="fa-solid fa-magnifying-glass"></i></a>
+                                             </div>
+                                        </form>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </div>
      </div>
 </section>
 <!--          BAanner Part End
@@ -69,7 +96,7 @@ curl_close($ch);
                               <img src="images/bmana.png" alt="">
                          </div>
                          <div class="login_btn text-center">
-                              <a href=""> <span><i class="fa-solid fa-user"></i></span> Member Login</a>
+                              <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop2"> <span><i class="fa-solid fa-user"></i></span> Member Login</a>
                          </div>
                          <div class="nav_list">
                               <ul>
@@ -468,3 +495,62 @@ curl_close($ch);
 <!--          NewsLetter Part End
      *****************************************-->
 <?php include('./include/footer.php'); ?>
+
+<script>
+     let data;
+     const str = ".*";
+
+
+     function searchMembers(ms_id) {
+          if ($('#search_key').val().length < 2) {
+               $('#search-result').empty();
+               $('#search-result').removeClass('d-block');
+               $('#search-result').addClass('d-none');
+               return;
+          }
+          const targetTXT = new RegExp(str + $('#search_key').val() + str, "gi");
+          event.preventDefault();
+          if (!data) {
+               $.ajax({
+                    url: 'https://icircles.app/api/medicalassociation/membersearch/' + ms_id,
+                    type: "GET",
+                    success: function(res) {
+                         let resData = JSON.parse(res);
+                         data = resData.data;
+                         let hs = ``;
+                         data.map((item) => {
+                              if ((item.firstname + " " + item.lastname).match(targetTXT)) {
+                                   hs += `<li><a href="member.php?id=${item.id}">${item.firstname}</a></li>`
+                              }
+                         })
+                         if (hs.length > 5) {
+                              $('#search-result').empty().append(hs);
+                              $('#search-result').removeClass('d-none');
+                              $('#search-result').addClass('d-block');
+                         } else {
+                              $('#search-result').empty();
+                              $('#search-result').removeClass('d-block');
+                              $('#search-result').addClass('d-none');
+                         }
+                    }
+               });
+          } else {
+               let hs = ``;
+               data.map((item) => {
+                    if ((item.firstname + " " + item.lastname).match(targetTXT)) {
+                         hs += `<li><a href="member.php?id=${item.id}">${item.firstname}</a></li>`
+                    }
+               })
+               if (hs.length > 5) {
+                    $('#search-result').empty().append(hs);
+                    $('#search-result').removeClass('d-none');
+                    $('#search-result').addClass('d-block');
+               } else {
+                    $('#search-result').empty();
+                    $('#search-result').removeClass('d-block');
+                    $('#search-result').addClass('d-none');
+               }
+
+          }
+     }
+</script>
