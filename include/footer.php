@@ -78,14 +78,14 @@ $foot_nav = $result->data->foot_nav;
                                                         <div class="row">
                                                             <div class="col-lg-12">
                                                                 <form onsubmit="login()">
-                                                                    <input type="text" class="form_control" id="email" placeholder="Email / Username">
-                                                                    <input type="password" id="pass" class="form_control mt-3" placeholder="Password">
+                                                                    <input type="text" class="form_control" id="email" placeholder="Email / Username" name="email" required>
+                                                                    <input type="password" id="pass" class="form_control mt-3" placeholder="Password" name="pass" required>
                                                                     <div class="continue_btn">
                                                                         <button type="submit"> <img src="images/logo.png" alt="">
                                                                             Log In</button>
                                                                     </div>
                                                                     <div class="forget_setion">
-                                                                        <span><input type="checkbox" id="remember"> Remember Me</span>
+                                                                        <span><input type="checkbox" id="remember" name="remember"> Remember Me</span>
 
                                                                         <a href="#" style="color:#0069cf;">Forgot Password</a>
                                                                     </div>
@@ -103,39 +103,43 @@ $foot_nav = $result->data->foot_nav;
                                             <div class="signUp_form">
                                                 <div class="row">
                                                     <div class="col-lg-12">
-                                                        <form onsubmit="registration()">
-                                                            <input type="text" class="form_control" placeholder="First Name">
-                                                            <input type="text" class="form_control" placeholder="Last Name">
-                                                            <input type="text" class="form_control" placeholder="Home Address">
-                                                            <input type="text" class="form_control" placeholder="Office Address">
-                                                            <input type="text" class="form_control" placeholder="Faculty Affiliations & Speciations">
-                                                            <input type="text" class="form_control" placeholder="Telephone">
-                                                            <input type="text" class="form_control" placeholder="Call">
-                                                            <input type="text" class="form_control" placeholder="E-mail">
-                                                            <input type="text" class="form_control" placeholder="Medical School">
-                                                            <input type="text" class="form_control" placeholder="State of Medical Licensure">
-                                                            <input type="text" class="form_control" placeholder="License">
-                                                            <input type="text" class="form_control" placeholder="Date">
+                                                        <form onsubmit="registration(this)">
+                                                            <input type="text" class="form_control" placeholder="First Name" name="firstname" id="firstname" required>
+                                                            <input type="text" class="form_control" placeholder="Last Name" name="lastname" id="lastname" required>
+                                                            <input type="text" class="form_control" placeholder="Home Address" id="home_address" name="home_address" required>
+                                                            <input type="text" class="form_control" placeholder="Office Address" id="office_address" name="office_address" required>
+                                                            <input type="text" class="form_control" placeholder="Faculty Affiliations & Speciations" id="speciation" name="speciation" required>
+                                                            <input type="text" class="form_control" placeholder="Telephone" id="telephone" name="telephone" required>
+                                                            <input type="text" class="form_control" placeholder="Call" id="call" name="call" required>
+                                                            <input type="text" class="form_control" placeholder="E-mail" name="email" id="reg_email" required>
+                                                            <input type="text" class="form_control" placeholder="Username" name="username" id="username" required>
+                                                            <input type="password" id="password" name="password" class="form_control mt-3" placeholder="Password" required>
+                                                            <input type="password" id="password2" name="password2" class="form_control mt-3" placeholder="Repeate password" name="password2" required>
+                                                            <input type="text" class="form_control" placeholder="Medical School" id="medical_school" name="medical_school" required>
+                                                            <input type="text" class="form_control" placeholder="State of Medical Licensure" id="medical_license" name="medical_license" required>
+                                                            <input type="text" class="form_control" placeholder="License" id="license" name="license" required>
+                                                            <input type="text" class="form_control" placeholder="Date" id="date" name="date" required>
                                                             <div class="statement">
                                                                 <ul>
                                                                     <li><a href="#">
-                                                                            <input type="checkbox">
+                                                                            <input type="checkbox" id="terms1" required>
                                                                             To The Best of my knowledge, the information is the correct status of my professional activity.
 
                                                                         </a></li>
                                                                     <li><a href="#">
-                                                                            <input type="checkbox">
+                                                                            <input type="checkbox" id="terms2" required>
                                                                             I agree to disclose above information's for BMANA membership registry & publication.
 
                                                                         </a></li>
                                                                 </ul>
                                                             </div>
+                                                            <div class="continue_btn">
+                                                                <button type="submit"> <img src="images/logo.png" alt="">
+                                                                    Registration</button>
+                                                            </div>
                                                         </form>
 
-                                                        <div class="continue_btn">
-                                                            <a href="#"> <img src="images/logo.png" alt="">
-                                                                Registration</a>
-                                                        </div>
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -182,6 +186,30 @@ $foot_nav = $result->data->foot_nav;
         data.append('pass', $('#pass').val());
         data.append('remember', $('#remember').is(':checked') ? 1 : 0);
         data.append('submit', 1);
+        $.ajax({
+            url: "auth.php",
+            method: 'post',
+            processData: false,
+            contentType: false,
+            cache: false,
+            data: data,
+            success: function(res) {
+                res = JSON.parse(res);
+                console.log(res);
+            },
+            error: function() {
+
+            }
+        });
+    }
+
+    function registration(e) {
+        event.preventDefault();
+        const data = new FormData(e);
+        data.append('terms1', $('#terms1').is(':checked') ? 1 : 0);
+        data.append('terms2', $('#terms2').is(':checked') ? 1 : 0);
+        data.append('registration', 1);
+
         $.ajax({
             url: "auth.php",
             method: 'post',
