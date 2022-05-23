@@ -62,7 +62,7 @@ $foot_nav = $result->data->foot_nav;
                                 <!-- nab Tab -->
                                 <ul class="nav nav-pills mb-3 text-center" id="pills-tab" role="tablist">
                                     <li class="nav-item" role="presentation">
-                                        <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true" id="signin">Sign In</button>
+                                        <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Sign In</button>
                                     </li>
                                     <li class="nav-item" role="presentation">
                                         <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Sign Up</button>
@@ -199,9 +199,8 @@ $foot_nav = $result->data->foot_nav;
             data: data,
             success: function(res) {
                 res = JSON.parse(res);
-                if (res.status) {
+                if (res.status == true) {
                     window.location.reload();
-
                 } else {
                     $('#login-info').html('<span class="text-center text-danger">Invalid!</span>')
                     $('#login-info').addClass('d-none');
@@ -233,9 +232,9 @@ $foot_nav = $result->data->foot_nav;
             success: function(res) {
                 res = JSON.parse(res);
                 if (res.status) {
-                    $('#login-info').html('<span class="text-center text-success">Registration successfully completed.</span>');
-                    $('#registration-info').removeClass('d-none');
-                    $('#signin').click();
+                    $('#login-info').html('<span class="text-center text-success">Registration successfully completed. Please login here.</span>');
+                    $('#login-info').removeClass('d-none');
+                    $('#pills-home-tab').click();
                 } else {
                     $('#registration-info').html('<span class="text-center text-danger">Failed to register!</span>');
                     $('#registration-info').removeClass('d-none');
