@@ -103,7 +103,11 @@
                                         </ul>
                                     </div>
                                     <div class="login_btn text-center">
-                                        <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop2"> <span><i class="fa-solid fa-user"></i></span> Member Login</a>
+                                        <?php if (isset($_SESSION['username']) && $_SESSION['username']) { ?>
+                                            <a href="profile.php"> <span><i class="fa-solid fa-user"></i></span><?= $_SESSION['username'] ?></a>
+                                        <?php } else { ?>
+                                            <a href="#"> <span><i class="fa-solid fa-user"></i></span> Member Login</a>
+                                        <?php } ?>
                                     </div>
                                     <div class="header_search">
                                         <form action="#">

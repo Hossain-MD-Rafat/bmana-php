@@ -1,4 +1,5 @@
 <?php
+session_start();
 if (isset($_POST['submit'])) {
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, 'https://icircles.app/api/login');
@@ -33,6 +34,7 @@ if (isset($_POST['registration'])) {
     $result = json_decode($response);
 
     if (isset($result->user_id) && $result->status) {
+        microsite_id,user_id,speciality,about_member,comments,home_address,office_address,faculty_affiliation,phone,medical_school,state_license
         $query1 = array(
             "email" => $_POST['email'],
             "firstname" => $_POST['firstname'],

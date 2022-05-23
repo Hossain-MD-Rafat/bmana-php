@@ -77,6 +77,7 @@ $foot_nav = $result->data->foot_nav;
                                                     <div class="signin_form">
                                                         <div class="row">
                                                             <div class="col-lg-12">
+                                                                <div class="d-none" id="contact-info"></div>
                                                                 <form onsubmit="login()">
                                                                     <input type="text" class="form_control" id="email" placeholder="Email / Username" name="email" required>
                                                                     <input type="password" id="pass" class="form_control mt-3" placeholder="Password" name="pass" required>
@@ -103,6 +104,7 @@ $foot_nav = $result->data->foot_nav;
                                             <div class="signUp_form">
                                                 <div class="row">
                                                     <div class="col-lg-12">
+                                                        <div class="d-none" id="contact-info"></div>
                                                         <form onsubmit="registration(this)">
                                                             <input type="text" class="form_control" placeholder="First Name" name="firstname" id="firstname" required>
                                                             <input type="text" class="form_control" placeholder="Last Name" name="lastname" id="lastname" required>
@@ -195,10 +197,19 @@ $foot_nav = $result->data->foot_nav;
             data: data,
             success: function(res) {
                 res = JSON.parse(res);
-                console.log(res);
+                if (res.status) {
+                    window.location.reload();
+
+                } else {
+                    $('#contact-info').html('<span class="text-center text-danger">Invalid!</span>')
+                    $('#contact-info').addClass('d-none');
+                    $(":input").val('');
+                }
             },
             error: function() {
-
+                $('#contact-info').html('<span class="text-center text-danger">Invalid!</span>')
+                $('#contact-info').addClass('d-none');
+                $(":input").val('');
             }
         });
     }
@@ -219,10 +230,18 @@ $foot_nav = $result->data->foot_nav;
             data: data,
             success: function(res) {
                 res = JSON.parse(res);
-                console.log(res);
+                if (res.status) {
+                    window.location.reload();
+                } else {
+                    $('#contact-info').html('<span class="text-center text-danger">Failed to register!</span>')
+                    $('#contact-info').addClass('d-none');
+                    $(":input").val('');
+                }
             },
             error: function() {
-
+                $('#contact-info').html('<span class="text-center text-danger">Failed to register!</span>')
+                $('#contact-info').addClass('d-none');
+                $(":input").val('');
             }
         });
     }
