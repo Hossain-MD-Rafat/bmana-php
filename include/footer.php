@@ -62,7 +62,7 @@ $foot_nav = $result->data->foot_nav;
                                 <!-- nab Tab -->
                                 <ul class="nav nav-pills mb-3 text-center" id="pills-tab" role="tablist">
                                     <li class="nav-item" role="presentation">
-                                        <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Sign In</button>
+                                        <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true" id="signin">Sign In</button>
                                     </li>
                                     <li class="nav-item" role="presentation">
                                         <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Sign Up</button>
@@ -77,7 +77,7 @@ $foot_nav = $result->data->foot_nav;
                                                     <div class="signin_form">
                                                         <div class="row">
                                                             <div class="col-lg-12">
-                                                                <div class="d-none" id="contact-info"></div>
+                                                                <div class="d-none" id="login-info"></div>
                                                                 <form onsubmit="login()">
                                                                     <input type="text" class="form_control" id="email" placeholder="Email / Username" name="email" required>
                                                                     <input type="password" id="pass" class="form_control mt-3" placeholder="Password" name="pass" required>
@@ -104,22 +104,24 @@ $foot_nav = $result->data->foot_nav;
                                             <div class="signUp_form">
                                                 <div class="row">
                                                     <div class="col-lg-12">
-                                                        <div class="d-none" id="contact-info"></div>
+                                                        <div class="d-none" id="registration-info"></div>
                                                         <form onsubmit="registration(this)">
                                                             <input type="text" class="form_control" placeholder="First Name" name="firstname" id="firstname" required>
                                                             <input type="text" class="form_control" placeholder="Last Name" name="lastname" id="lastname" required>
                                                             <input type="text" class="form_control" placeholder="Home Address" id="home_address" name="home_address" required>
                                                             <input type="text" class="form_control" placeholder="Office Address" id="office_address" name="office_address" required>
-                                                            <input type="text" class="form_control" placeholder="Faculty Affiliations & Speciations" id="speciation" name="speciation" required>
-                                                            <input type="text" class="form_control" placeholder="Telephone" id="telephone" name="telephone" required>
-                                                            <input type="text" class="form_control" placeholder="Call" id="call" name="call" required>
+                                                            <input type="text" class="form_control" placeholder="Speciality" id="speciality" name="speciality" required>
+                                                            <input type="text" class="form_control" placeholder="Faculty Affiliations & Speciations" id="faculty_affiliation" name="faculty_affiliation" required>
+                                                            <input type="text" class="form_control" placeholder="Telephone" id="phone" name="phone" required>
+
                                                             <input type="text" class="form_control" placeholder="E-mail" name="email" id="reg_email" required>
                                                             <input type="text" class="form_control" placeholder="Username" name="username" id="username" required>
                                                             <input type="password" id="password" name="password" class="form_control mt-3" placeholder="Password" required>
                                                             <input type="password" id="password2" name="password2" class="form_control mt-3" placeholder="Repeate password" name="password2" required>
                                                             <input type="text" class="form_control" placeholder="Medical School" id="medical_school" name="medical_school" required>
-                                                            <input type="text" class="form_control" placeholder="State of Medical Licensure" id="medical_license" name="medical_license" required>
-                                                            <input type="text" class="form_control" placeholder="License" id="license" name="license" required>
+                                                            <input type="text" class="form_control" placeholder="State of Medical Licensure" id="state_license" name="state_license" required>
+                                                            <input type="text" class="form_control" placeholder="About member" id="about_member" name="about_member" required>
+                                                            <input type="text" class="form_control" placeholder="Comments" id="comments" name="comments" required>
                                                             <input type="text" class="form_control" placeholder="Date" id="date" name="date" required>
                                                             <div class="statement">
                                                                 <ul>
@@ -201,14 +203,14 @@ $foot_nav = $result->data->foot_nav;
                     window.location.reload();
 
                 } else {
-                    $('#contact-info').html('<span class="text-center text-danger">Invalid!</span>')
-                    $('#contact-info').addClass('d-none');
+                    $('#login-info').html('<span class="text-center text-danger">Invalid!</span>')
+                    $('#login-info').addClass('d-none');
                     $(":input").val('');
                 }
             },
             error: function() {
-                $('#contact-info').html('<span class="text-center text-danger">Invalid!</span>')
-                $('#contact-info').addClass('d-none');
+                $('#login-info').html('<span class="text-center text-danger">Invalid!</span>')
+                $('#login-info').addClass('d-none');
                 $(":input").val('');
             }
         });
@@ -231,16 +233,19 @@ $foot_nav = $result->data->foot_nav;
             success: function(res) {
                 res = JSON.parse(res);
                 if (res.status) {
-                    window.location.reload();
+                    $('#login-info').html('<span class="text-center text-success">Registration successfully completed.</span>');
+                    $('#registration-info').removeClass('d-none');
+                    $('#signin').click();
                 } else {
-                    $('#contact-info').html('<span class="text-center text-danger">Failed to register!</span>')
-                    $('#contact-info').addClass('d-none');
+                    $('#registration-info').html('<span class="text-center text-danger">Failed to register!</span>');
+                    $('#registration-info').removeClass('d-none');
                     $(":input").val('');
                 }
             },
-            error: function() {
-                $('#contact-info').html('<span class="text-center text-danger">Failed to register!</span>')
-                $('#contact-info').addClass('d-none');
+            error: function(res) {
+                console.log(res)
+                $('#registration-info').html('<span class="text-center text-danger">Failed to register!</span>')
+                $('#registration-info').removeClass('d-none');
                 $(":input").val('');
             }
         });
