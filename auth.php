@@ -12,6 +12,7 @@ if (isset($_POST['submit'])) {
         $_SESSION['username'] = $_POST['email'];
         $_SESSION['remember'] = $_POST['remember'];
         $_SESSION['token'] = $result->token;
+        $_SESSION['user_id'] = $result->user_id;
     }
     curl_close($ch);
     echo $response;
@@ -34,6 +35,7 @@ if (isset($_POST['registration'])) {
     $result = json_decode($response);
 
     if (isset($result->user_id) && $result->status) {
+        $_SESSION['user_id'] = $result->user_id;
         $query1 = array(
             "microsite_id" => $_SESSION['ms_id'],
             "user_id" => $result->user_id,

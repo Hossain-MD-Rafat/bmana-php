@@ -276,8 +276,13 @@ curl_close($ch);
                               <h4>Whatever your Passion, We cater to your unique needs.</h4>
                               <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centu</p>
                               <div class="mamber_adder">
-                                   <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">Become A Member</a>
-                                   <span><a href="#" class="mamber_add"><i class="fa-solid fa-user-plus"></i></a></span>
+                                   <?php if (isset($_SESSION['username']) && $_SESSION['username']) { ?>
+                                        <a href="profile.php"> <span><i class="fa-solid fa-user"></i></span> <?= $_SESSION['username'] ?></a>
+                                   <?php } else { ?>
+                                        <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">Become A Member</a>
+                                        <span><a href="#" class="mamber_add"><i class="fa-solid fa-user-plus"></i></a></span>
+                                   <?php } ?>
+
                               </div>
                          </div>
                     </div>

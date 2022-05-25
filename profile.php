@@ -1,38 +1,55 @@
-<?php include('./include/header.php'); ?>
+<?php include('./include/page_header.php'); ?>
 
 <?php
 $ms_id = $_SESSION['ms_id'];
+$user_id = $_SESSION['user_id'];
 $ch = curl_init();
 $query = array(
-    "email" => $_POST['email'],
-    "firstname" => $_POST['firstname'],
-    "lastname" => $_POST['lastname'],
-    "password" => $_POST['password'],
-    "password2" => $_POST['password2'],
-    "username" => $_POST['username'],
+    "user_id" => 288,
 );
 curl_setopt($ch, CURLOPT_URL, 'https://icircles.app/api/medicalassociation/membersearch/' . $ms_id);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_POST, true);
+curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($query));
 $response = curl_exec($ch);
 $result = json_decode($response);
+$result = $result->data[0];
 curl_close($ch);
-
-$ms_id = $result->data->ms_id;
-$front_section = $result->data->front_sections;
-$sponsors = $result->data->sponsors;
-$main_nav = $result->data->main_nav;
-$no_position = $result->data->no_position;
-$ms_info = $result->data->ms_info;
-$sliders = $result->data->sliders;
-
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, 'https://icircles.app/api/medicalassociation/membersearch/' . $ms_id);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-$response1 = curl_exec($ch);
-$members = json_decode($response1);
-$members = $members->data;
-curl_close($ch);
-
-
 
 ?>
+
+<div class="container mt-5 mb-5">
+    <div class="row">
+        <div class="offset-md-1 col-md-10">
+            <div class="row">
+                <div class="col-md-6">
+                    <img class="w-75" src=<?= "https://icircles.app/" . $result->thumb ?> alt="profile-image">
+                    <br>
+                    <a href="logout.php" class="btn btn-primary">Log Out</a>
+                </div>
+                <div class="col-md-6">
+                    <ul>
+                        <li>Name: <?= $result->firstname . ' ' . $result->lastname ?></li>
+                        <li>Designation: <?= $result->designation ?></li>
+                        <li>speciality: <?= $result->speciality ?></li>
+                        <li>Member Type: <?= $result->membertype ?></li>
+                        <li>Email: <?= $result->email ?></li>
+                        <li>Home Address: <?= $result->home_address ?></li>
+                        <li>Office Address: <?= $result->office_address ?></li>
+                        <li>Faculty Affiliation: <?= $result->faculty_affiliation ?></li>
+                        <li>Phone: <?= $result->phone ?></li>
+                        <li>Medical School: <?= $result->medical_school ?></li>
+                        <li>State License: <?= $result->state_license ?></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<?php include('./include/footer.php'); ?>
