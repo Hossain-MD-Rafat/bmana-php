@@ -1,0 +1,65 @@
+.lookBack{
+    .section_header{
+        padding: 25px 140px;
+        background-color: $black;
+        display: inline-block;
+        border-radius: 52%;
+        span{
+            color: $white;
+            font-size: 28px;
+            font-family: $font1;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+    }
+    .lookBack_wrapper{
+       margin-top: 80px;
+        background-color: $black;
+        padding: 50px 0;
+        .back_wrap{
+             position: relative;
+            img{
+                width: 100%;
+            }
+            .back_overly{
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+                background-color: rgba(0,0,0,0.1);
+                .back_icon{
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%,-50%);
+                    a{
+                        i{
+                        
+                            font-size: 70px;
+                            color: $white;
+                        }
+                    }
+                }
+            }
+        }
+        .text_item{
+            h4{
+                font-size: 24px;
+                color: $white;
+                font-weight: 400;
+            }
+            h5{
+                font-size: 20px;
+                color: $white;
+                font-weight: 400;
+            }
+            p{
+                font-size: 16px;
+                color: $white;
+                font-weight: 400;
+                line-height: 28px;
+            }
+        }
+    }
+}

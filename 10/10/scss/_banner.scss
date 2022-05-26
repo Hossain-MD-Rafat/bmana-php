@@ -1,0 +1,189 @@
+.banner_main{
+     height: 100vh;
+     overflow: hidden !important;
+     max-height: 100vh;
+     .banner_slider{ 
+          height: 100vh;
+        .prev{
+            display: none !important;
+        }
+        .next{
+            height: 80px;
+            width: 80px;
+            color: $white;
+            text-align: center;
+            line-height: 80px;
+            font-size: 50px;
+            border-radius: 50%;
+            border: 1px solid $white;
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            right: 10%;
+            transform: translateY(-50%);
+            z-index: 4;
+            &:hover{
+                background-color: #aaa8a885;
+            }
+ 
+        }
+        .slick-dots{
+         position: absolute;
+         bottom: 40px; 
+         left: 50%;
+         transform: translateX(-50%);
+         z-index: 5 !important;
+         .slick-active{
+             height:20px;
+             width: 20px;
+             background-color: rgb(255, 255, 255);
+         }
+         li{
+             display: inline-block;
+             height: 20px;
+             width: 20px;
+             background-color: rgba(183, 180, 180, 0.6);
+             margin: 0 5px;
+             border-radius:50% ;
+             -webkit-border-radius:50% ;
+             -moz-border-radius:50% ;
+             -ms-border-radius:50% ; 
+             -o-border-radius:50% ;
+             button{
+                 color: transparent;
+ }
+         }
+     }
+         .sliderItem{  
+            video{
+                width: 100% !important;
+            }
+            .bannerImg1{
+                background-image: url(../images/ban1.jpg);
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+                height: 100vh;
+                max-height: 100vh;
+            }
+            .bannerImg2{
+                background-image: url(../images/ban2.jpg);
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+                height: 100vh;
+                max-height: 100vh;
+            }
+            .bannerImg3{
+                background-image: url(../images/ban3.jpg);
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+                height: 100vh;
+                max-height: 100vh;
+            }
+            .bannerImg4{
+                background-image: url(../images/ban4.jpg);
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+                height: 100vh;
+                max-height: 100vh;
+            }
+         }
+     }
+      .banner_wrapper{
+        .banner_wrap{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            z-index: 99;
+            transform: translate(-50%,-50%);
+            -webkit-transform: translate(-50%,-50%);
+            -moz-transform: translate(-50%,-50%);
+            -ms-transform: translate(-50%,-50%);
+            -o-transform: translate(-50%,-50%);
+             .banner_text{
+                  h4{
+                      font-size:36px;
+                      color: $white;
+                      font-weight: 600;
+                      line-height: 46px;
+                      span{
+                          font-family: $font2;
+                          font-size: 45px;
+                          font-weight: 700;
+                      }
+                  }
+                  h5{
+                    font-size:45px;
+                    color: $white;
+                    font-weight: 700;
+                    padding-top: 10px;
+                    line-height: 55px;
+                }
+               
+             }
+             .register_btn{
+                 padding-top: 40px;
+                 a{
+                     padding: 12px 50px;
+                     background: #f8022c;
+                     color: $white;
+                     font-size: 20px; 
+                     font-weight: 500;
+                     border-radius: 30px;
+                     text-transform: uppercase;
+                 }  
+             }
+             .offer{
+                padding: 10px 32px;
+                text-align: center;
+                z-index: 99;
+                margin-top: 40px;
+                display: inline-block;
+                ul{
+                    li{
+                        display: inline-block;
+                        margin: 0 10px;
+                        height: 120px;
+                        width: 110px;
+                        border-radius:20px;
+                        position: relative;
+                       h5{
+                        text-align: center;
+                        font-size: 28px;
+                        font-weight: 600;
+                        font-family: $font1;
+                        color: $white; 
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%,-50%);
+                        br{
+                            margin: 5px 0;
+                        }
+
+                    }
+                    }
+                    .demo1Bg{
+                        background: linear-gradient(to bottom, #791492 0%, #f13bfa 100%);
+                        opacity: 80%;
+                    }
+                    .demo2Bg{
+                        background: linear-gradient(to bottom, #a14c22 0%, #f55d14 100%);
+                        opacity: 80%;
+                    } 
+                    .demo3Bg{
+                        background: linear-gradient(to bottom, #1d5d89 0%, #0dabe6 100%);
+                        opacity: 80%;
+                    }
+                    .demo4Bg{
+                        background: linear-gradient(to bottom, #135242 0%, #046e52 100%);
+                        opacity: 80%;
+                    }
+                }
+            }
+            }
+     }
+}

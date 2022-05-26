@@ -1,0 +1,66 @@
+.registration{
+    padding: 0 0 100px 0;
+    background-image: url(../images/registration_bg.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    z-index: 1;
+    &::after{
+        position: absolute;
+        content: '';
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 50%;
+        background-color: rgb(255, 255, 255);
+        z-index: -2;
+    }
+    .section_header{
+        padding: 25px 140px;
+        background-color: $black;
+        display: inline-block;
+        border-radius: 52%;
+        margin-top: 100px;
+        span{
+            color: $white;
+            font-size: 28px;
+            font-family: $font1;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+    }
+    .registration_wrapper{
+            padding-top: 80px;
+          .registration_wrap{
+              background-color: $white;
+              padding: 85px 40px;
+              text-align: center;
+              border-radius: 10px;
+              position: relative;
+              &::after{
+              position: absolute;
+              content: '';
+              top: -5px;
+              left: -5px;
+              height: 100%;
+              width: 100%;
+              background-color: $black;
+              border-radius: 10px;
+              z-index: -1;
+              }
+              i{
+                  font-size: 75px;
+                  color: $black;
+              }
+              h5{
+                  font-size: 28px;
+                  color: $black;
+                  line-height: 40px;
+                  font-weight: 500;
+                  padding-top: 10px;
+              }
+          }
+    }
+}

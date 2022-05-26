@@ -46,11 +46,10 @@ curl_close($ch);
 
                                                   </div>
 
-                                                  <div class="banner_search" data-aos="fade-up-left" data-aos-easing="ease" data-aos-duration="5s">
+                                                  <!--div class="banner_search" data-aos="fade-up-left" data-aos-easing="ease" data-aos-duration="5s">
 
-                                                       <h4><?= $item->title ?></h4>
-                                                       <h5><?= $item->description ?></h5>
-                                                  </div>
+                                                       
+                                                  </div-->
                                              </div>
                                         </div>
                                    </div>
@@ -183,14 +182,14 @@ curl_close($ch);
 <section>
      <div class="mission">
           <div class="container">
+
                <div class="mission_wrapper">
                     <div class="row">
 
                          <?php foreach (array_slice($no_position, 0, 3) as $key => $item) { ?>
                               <div class="col-md-6 col-lg-4 text-center height-140">
                                    <div class="mission_item">
-                                        <h4><?= $item->page_title ?></h4>
-                                        <p><?= substr(strip_tags($item->body_content), 0, 50); ?></p>
+                                        <h4><?= $item->menu_name ?></h4><br /><br /><br />
                                         <a href="page.php?id=<?= $item->id ?>">Read More</a>
                                    </div>
                               </div>
@@ -198,7 +197,14 @@ curl_close($ch);
 
                     </div>
                </div>
-               <div class="card_wrapper">
+               <div class="card_wrapper newsannouc">
+                    <div class="row">
+                         <div class="col-lg-12 text-center">
+                              <div class="section_header">
+                                   <h4> NEWS AND ANNOUNCEMENT </h4>
+                              </div>
+                         </div>
+                    </div>
                     <div class="row card_slider">
                          <?php foreach ($front_section as $key => $item) { ?>
                               <div class="col-lg-4 text-center">
@@ -239,9 +245,12 @@ curl_close($ch);
                </div>
                <div class="committe_wrapper">
                     <div class="row justify-content-center">
+                         <div style="width: 0% ;"></div>
                          <?php foreach ($members as $key => $item) {
                               if ($item->membership_type_id == 1) {
-                         ?><div class="col-sm-6 col-md-4 col-lg-3" data-aos="fade-up-right" data-aos-easing="ease" data-aos-duration="5s">
+                                   $name = $item->firstname . ' ' . $item->lastname;
+                         ?>
+                                   <div class="col-sm-6 col-md-4 col-lg-3" data-bs-toggle="modal" data-bs-target="#exampleModal" data-aos="fade-up-right" data-aos-easing="ease" data-aos-duration="5s" onclick="bCardPreview('<?= $name ?>','<?= $item->thumb ?>','<?= $item->designation ?>','<?= $item->speciality ?>','<?= $item->email ?>',`<?= $item->about_member ?>`)">
                                         <div class="committe_wrap">
                                              <div class="profile_img text-center">
                                                   <div class="p_img">
@@ -250,8 +259,8 @@ curl_close($ch);
                                                   <h4><?= $item->designation ?></h4>
                                              </div>
                                              <div class="profile_info text-center">
-                                                  <h5><?= $item->firstname . ' ' . $item->lastname ?></h5>
-                                                  <h6 style="font-style: italic"><?= $item->speciality ?></h6>
+                                                  <h5><?= $item->firstname . ' ' . $item->lastname ?>, <?= $item->speciality ?></h5>
+                                                  <h6 style="font-style: italic"><?= $item->email ?></h6>
                                              </div>
                                         </div>
                                    </div>
@@ -276,13 +285,8 @@ curl_close($ch);
                               <h4>Whatever your Passion, We cater to your unique needs.</h4>
                               <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centu</p>
                               <div class="mamber_adder">
-                                   <?php if (isset($_SESSION['username']) && $_SESSION['username']) { ?>
-                                        <a href="profile.php"> <span><i class="fa-solid fa-user"></i></span> <?= $_SESSION['username'] ?></a>
-                                   <?php } else { ?>
-                                        <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">Become A Member</a>
-                                        <span><a href="#" class="mamber_add"><i class="fa-solid fa-user-plus"></i></a></span>
-                                   <?php } ?>
-
+                                   <a href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">Become A Member</a>
+                                   <span><a href="#" class="mamber_add"><i class="fa-solid fa-user-plus"></i></a></span>
                               </div>
                          </div>
                     </div>
@@ -369,7 +373,7 @@ curl_close($ch);
                <div class="row">
                     <div class="col-lg-12 text-center">
                          <div class="section_header">
-                              <h4> NEWS AND ANNOUNCEMENT </h4>
+                              <h4> PAST CONVENTIONS </h4>
                          </div>
                     </div>
                </div>
@@ -387,11 +391,7 @@ curl_close($ch);
                                    <?php } ?>
                               </div>
                          </div>
-                         <div class="col-lg-1"></div>
-                         <div class="news_info text-center">
-                              <h4>BMANA 41st Annual Convention 2022</h4>
-                              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-                         </div>
+
                     </div>
                </div>
           </div>
@@ -410,7 +410,7 @@ curl_close($ch);
                     <div class="col-lg-12">
                          <div class="convention_wrapper text-center">
                               <h4>41st BMANA Convention 2022 – Where Great Minds Unite. </h4>
-                              <a href="#">bmanaconvention.org</a>
+                              <a href="https://bmanaconvention2022.org/">bmanaconvention2022.org</a>
                          </div>
                     </div>
                </div>
@@ -448,8 +448,7 @@ curl_close($ch);
                     <div class="donate_site">
                          <div class="row align-items-center">
                               <div class="col-md-6 col-lg-6 text-center">
-
-                                   <a href="https://apps.veem.com/CustomerApp/Pay/bangladeshmedicalassociationofnorthamerica" target="_blank">Donate Here</a>
+                                   <a href="#" data-bs-toggle="modal" data-bs-target="#donatemodal">Donate Here</a>
                               </div>
                               <div class="col-md-6 col-lg-6">
                                    <div class="donate_right">
@@ -494,6 +493,36 @@ curl_close($ch);
                                              </div>
                                         </div>
                                    </div>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </div>
+</section>
+<section>
+     <div class="mamberModal">
+          <div class="container">
+               <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                         <div class="modal-content">
+                              <div class="modal-header">
+                                   <h5 class="modal-title" id="exampleModalLabel"></h5>
+                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body">
+                                   <div class="profileImg">
+                                        <img class="delete_id rounded-circle" src="images/profileMAn.png" alt="">
+                                   </div>
+                                   <div class="profileDescription text-center">
+                                        <h4 class="abt_name"></h4>
+                                        <h5 class="abt_speciality"></h5>
+                                        <span class="abt_email"></span>
+                                        <div class="abt_details"></div>
+                                   </div>
+                              </div>
+                              <div class="modal-footer">
+                                   <button type="button" class="mamberModalClose" data-bs-dismiss="modal">Close</button>
                               </div>
                          </div>
                     </div>
@@ -561,5 +590,15 @@ curl_close($ch);
                }
 
           }
+     }
+
+     function bCardPreview(name, img, designation, speciality, email, about) {
+          console.log(about);
+          $(".delete_id").attr("src", "https://icircles.app/" + img);
+          $(".abt_name").html(name + ', ' + speciality);
+          $(".abt_speciality").html(designation);
+          $(".abt_email").html(email);
+          $(".abt_details").html(about);
+          return;
      }
 </script>

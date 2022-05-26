@@ -34,6 +34,9 @@ if (isset($_POST['registration'])) {
     $response = curl_exec($ch);
     $result = json_decode($response);
 
+    $_SESSION['reg_user'] = $result->user_id;
+    $_SESSION['reg_status'] = $result->status;
+
     if (isset($result->user_id) && $result->status) {
         $_SESSION['user_id'] = $result->user_id;
         $query1 = array(
@@ -61,3 +64,5 @@ if (isset($_POST['registration'])) {
     }
     echo json_encode($result);
 }
+
+if

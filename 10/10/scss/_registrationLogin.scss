@@ -1,0 +1,69 @@
+#modal_1{
+    .modal{
+          z-index: 99999999999;
+        .modal-dialog{
+            position: relative;
+            margin: 7.0rem auto;
+            
+              .modal-content{ 
+                    padding: 20px 0 50px 0;
+                    background-color: #fff;
+                    outline: 0;
+                    z-index: 1;
+                    opacity: 1;
+                  .modal-header{
+                    border-bottom: none;
+                    margin: 0 auto;
+                    padding: 0rem 0rem;
+                    .header_info{
+                        margin: 0 auto;
+                    }
+                    h5{
+                        font-size: 28px;
+                        color: $black;  
+                        font-weight: 600;
+                        span{
+                            color: $primaryColor;
+                        }
+                      }
+                    .btn-close{
+                        position: absolute;
+                        right: 20px;
+                        top: 20px;
+                        z-index: 9999;
+                     &:focus {
+                        outline: 0;
+                        box-shadow: 0 0 0 .25rem transparent;
+                        opacity: 1;
+                     }
+                    }
+                     
+                      button{
+                          position: absolute;
+                          top: 20px;
+                          right: 20px;
+                          background-color: white; 
+                          opacity: 1;
+                      }
+                  }
+                  .modal-body{
+                      .header_info{
+                           text-align: center;
+                          img{
+                              width: 80px;
+                          }
+                          h5{
+                              font-size: 24px;
+                              font-family: $font1;
+                              color: $primaryColor;
+                              font-weight: 500;
+                              padding-top: 10px;
+                              line-height:34px ;
+                          }
+                      }
+                   
+                  }
+              }
+        }
+    }
+} 

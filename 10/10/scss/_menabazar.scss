@@ -1,0 +1,64 @@
+.menabazar{
+    padding: 100px 0;
+    .section_header{
+        padding: 25px 140px;
+        background-color: $black;
+        display: inline-block;
+        border-radius: 52%;
+        span{
+            color: $white;
+            font-size: 28px;
+            font-family: $font1;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+    }
+    .meanbazar_wrapper{
+        .p_text{
+            p{
+               padding: 40px 270px; 
+               text-align: center;
+               color: $black;
+               font-size: 16px;
+               font-weight: 400;
+               line-height: 26px;
+            }
+        }
+        .bazar_card{
+            box-shadow: 1px 1.732px 20px 0px rgba(0,0,0,0.2);
+            border-radius: 10px;
+            padding: 10px;
+             .card_img{
+                 img{
+                     width: 100%;
+                     border-radius: 10px;
+                 }
+             }
+             .card_text{
+                 padding-bottom:20px;
+                  h4{
+                    font-size: 20px;
+                    font-weight: 600;
+                    color: $black;
+                    padding-top: 20px; 
+                  }
+                  p{
+                    font-size: 16px;
+                    font-weight: 400;
+                    color: $text;
+                    padding: 10px 0;
+                  }
+                  a{
+                      padding: 12px 40px;
+                      background-color: #282828;
+                      border-radius: 35px;
+                      font-size: 16px;
+                      color: $white;
+                      &:hover{
+                          background-color: $primaryColor;
+                      }
+                  }
+             }
+        }
+    }
+}
