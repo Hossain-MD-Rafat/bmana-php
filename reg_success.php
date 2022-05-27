@@ -1,7 +1,7 @@
 <?php
 require_once("vendor/stripe/stripe-php/init.php");
 
-$stripe = new \Stripe\StripeClient("sk_test_4eC39HqLyjWDarjtT1zdp7dc");
+$stripe = new \Stripe\StripeClient("pk_live_51Kypt7JwWzF6rR1yOC6jCQ6Qi9XPCCKOdv908r5fZ2JuhvWkBcdUHLoDNbVfRFPbF5ZOPoiXNIPOCnIc1eagaWkb002XNiczM3");
 
 session_start();
 

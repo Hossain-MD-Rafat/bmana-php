@@ -4,7 +4,8 @@ session_start();
 require_once("vendor/stripe/stripe-php/init.php");
 
 
-\Stripe\Stripe::setApiKey("sk_test_4eC39HqLyjWDarjtT1zdp7dc");
+\Stripe\Stripe::setApiKey("pk_live_51Kypt7JwWzF6rR1yOC6jCQ6Qi9XPCCKOdv908r5fZ2JuhvWkBcdUHLoDNbVfRFPbF5ZOPoiXNIPO
+CnIc1eagaWkb002XNiczM3");
 
 if (isset($_POST['donate']) && !is_null($_POST['name']) && !is_null($_POST['email'])) {
     try {

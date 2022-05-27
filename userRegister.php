@@ -68,7 +68,7 @@
                     </div>
                     <div class="col-lg-12 mt-3 d-flex justify-content-between m_list">
                       <label for="input"> Office Address :</label>
-                      <input type="text" class="form_control m_w100" placeholder="Office  Address" name="office_addres">
+                      <input type="text" class="form_control m_w100" placeholder="Office  Address" name="office_address">
                     </div>
                     <div class="col-lg-12 mt-3 d-flex justify-content-between">
                       <label for="input"> Speciality :</label>
