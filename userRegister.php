@@ -25,44 +25,42 @@
                   Dental college of Bangladesh, residing in North America are eligible to become member.
                 </p>
               </div>
-              <div class="top_table">
-                <form action="#">
+              <form action="auth.php" method="POST">
+                <div class="top_table">
                   <div class="row">
                     <div class="col-lg-12">
                       <div class="table_item">
-                        <h5> <input name="mambership" class="cheque" type="radio"> LIFE MEMBERSHIP</h5>
+                        <h5> <input name="membership_type" class="cheque" type="radio" value="2"> LIFE MEMBERSHIP</h5>
                         <h6> $400 until 12/31/2022, after that $500 (no renewal required)</h6>
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="table_item">
-                        <h5> <input name="mambership" class="cheque" type="radio"> Active Membership</h5>
+                        <h5> <input name="membership_type" class="cheque" type="radio" checked value="3"> Active Membership</h5>
                         <h6> $50.00/year (renewable yearly)</h6>
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <div class="table_item">
-                        <h5> <input name="mambership" class="cheque" type="radio"> Associate Membership</h5>
+                        <h5> <input name="membership_type" class="cheque" type="radio" value="4"> Associate Membership</h5>
                         <h6> $25.00/year (renewable yearly)</h6>
                       </div>
                     </div>
                   </div>
-                </form>
-              </div>
-              <div class="form_body">
-                <form action="auth.php" method="POST">
+                </div>
+                <div class="form_body">
                   <div class="row">
                     <div class="col-md-6 col-lg-6 d-flex justify-content-between m_list">
                       <label for="input"> First Name :</label>
-                      <input type="text" class="form_control m_w100" placeholder="First Name" readonly>
+                      <input type="text" class="form_control m_w100" placeholder="First Name" readonly value="<?= isset($_SESSION['reg_firstname']) ? $_SESSION['reg_firstname'] : '' ?>">
                     </div>
                     <div class="col-md-6 col-lg-6 d-flex justify-content-between m_list">
                       <label for="input"> Last Name :</label>
-                      <input type="text" class="form_control m_w100" placeholder="Last Name" readonly>
+                      <input type="text" class="form_control m_w100" placeholder="Last Name" readonly value="<?= isset($_SESSION['reg_lastname']) ? $_SESSION['reg_lastname'] : '' ?>">
                     </div>
                     <div class="col-md-6 col-lg-12 mt-3 d-flex justify-content-between">
                       <label for="input"> E-mail :</label>
-                      <input type="text" class="form_control" placeholder="E-mail" readonly>
+                      <input type="text" class="form_control" placeholder="E-mail" readonly value="<?= isset($_SESSION['reg_email']) ? $_SESSION['reg_email'] : '' ?>">
                     </div>
                     <div class="col-lg-12 mt-3 d-flex justify-content-between m_list">
                       <label for="input"> Home Address :</label>
@@ -70,7 +68,7 @@
                     </div>
                     <div class="col-lg-12 mt-3 d-flex justify-content-between m_list">
                       <label for="input"> Office Address :</label>
-                      <input type="text" class="form_control m_w100" placeholder="Office  Address" name="office_address">
+                      <input type="text" class="form_control m_w100" placeholder="Office  Address" name="office_addres">
                     </div>
                     <div class="col-lg-12 mt-3 d-flex justify-content-between">
                       <label for="input"> Speciality :</label>
@@ -109,7 +107,7 @@
                     </div>
                     <div class="col-md-6 col-lg-5 mt-3 d-flex justify-content-between">
                       <label for="input"> Affiliation: </label>
-                      <input type="text" class="form_control" placeholder=" Affiliation" name="affiliation">
+                      <input type="text" class="form_control" placeholder=" Affiliation" name="faculty_affiliation">
                     </div>
                     <div class="col-md-12 col-lg-4 mt-3 d-flex justify-content-between">
                       <label for="input" style="font-size: 20px;"> Preferred Mailing Address : </label>
@@ -126,12 +124,12 @@
                       <div class="row">
                         <div class="col-lg-6">
                           <div class="table_item">
-                            <h5> <input name="mambership" class="cheque" type="radio"> Online Payment</h5>
+                            <h5> <input name="payment_method" class="cheque" type="radio" value="1"> Online Payment</h5>
                           </div>
                         </div>
                         <div class="col-lg-6">
                           <div class="table_item">
-                            <h5> <input name="mambership" class="cheque" type="radio"> Offline Payment</h5>
+                            <h5> <input name="payment_method" class="cheque" type="radio" value="0"> Offline Payment</h5>
                           </div>
                         </div>
                       </div>
@@ -152,9 +150,8 @@
                   <div class="save_btn">
                     <input type="submit" name="register_two">
                   </div>
-                </form>
-
-              </div>
+                </div>
+              </form>
             </div>
             <div class="col-lg-1"></div>
           </div>

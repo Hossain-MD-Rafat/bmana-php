@@ -2965,7 +2965,7 @@ text-align: center;
 .form-1 .form_main .form_body{
   padding-top:40px
 }
-.form-1 .form_main .form_body form .form_control{
+.form-1 .form_main .form_body  .form_control{
   display:block;
   width:75%;
   height:45px;
@@ -2982,30 +2982,30 @@ text-align: center;
   -ms-border-radius:5px;
   -o-border-radius:5px
 }
-.form-1 .form_main .form_body form .form_control::placeholder{
+.form-1 .form_main .form_body  .form_control::placeholder{
   font-size:15px;
   color:#807f7f;
   font-weight:400
 }
-.form-1 .form_main .form_body form .cheque{
+.form-1 .form_main .form_body  .cheque{
   height:17px;
   width:17px
 }
-.form-1 .form_main .form_body form label{
+.form-1 .form_main .form_body  label{
   font-size:19px;
   color:#000;
   font-weight:500;
   font-family:"Lora",serif;
   padding:10px 0
 }
-.form-1 .form_main .form_body form h3{
+.form-1 .form_main .form_body  h3{
   font-size:16px;
   color:#1d1d1d;
   font-weight:500;
   font-family:"Lora",serif;
   padding-top:30px
 }
-.form-1 .form_main .form_body form h4{
+.form-1 .form_main .form_body  h4{
   font-size:15px;
   color:#1d1d1d;
   font-weight:500;

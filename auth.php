@@ -1,4 +1,6 @@
 <?php
+require_once("vendor/stripe/stripe-php/init.php");
+\Stripe\Stripe::setApiKey("sk_test_4eC39HqLyjWDarjtT1zdp7dc");
 session_start();
 if (isset($_POST['submit'])) {
     $ch = curl_init();
@@ -33,10 +35,14 @@ if (isset($_POST['register'])) {
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     $response = curl_exec($ch);
     $result = json_decode($response);
+    curl_close($ch);
 
     if (isset($result->user_id) && $result->status) {
         $_SESSION['reg_user'] = $result->user_id;
         $_SESSION['reg_status'] = $result->status;
+        $_SESSION['reg_email'] = $_POST['email'];
+        $_SESSION['reg_firstname'] = $_POST['firstname'];
+        $_SESSION['reg_lastname'] = $_POST['lastname'];
         header('Location: userRegister.php');
     } else {
         $_SESSION['reg_status'] = false;
@@ -46,30 +52,62 @@ if (isset($_POST['register'])) {
 
 
 if (isset($_POST['register_two'])) {
+    $ch = curl_init();
+    $data = $_POST;
+    $amount = 400;
+    $name = "Life Membership";
+    if ((int)$_POST['membership_type'] == 2) {
+        $amount = 40000;
+        $name = "Life Membership";
+    } elseif ((int)$_POST['membership_type'] == 3) {
+        $amount = 5000;
+        $name = "Active Membership";
+    } elseif ((int)$_POST['membership_type'] == 4) {
+        $amount = 2500;
+        $name = "Associate Membership";
+    }
+    $data['microsite_id'] = $_SESSION['ms_id'];
+    $data['user_id'] =  $_SESSION['reg_user'];
+    $data['amount'] =  $amount / 100;
+    curl_setopt($ch, CURLOPT_URL, 'https://icircles.app/api/medicalassociation/register');
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $response = curl_exec($ch);
+    $res = json_decode($response);
+    curl_close($ch);
+    if ($res->status && $_POST['payment_method'] == 1) {
 
-    print_r($_POST);
-
-    // $_SESSION['user_id'] = $result->user_id;
-    // $query1 = array(
-    //     "microsite_id" => $_SESSION['ms_id'],
-    //     "user_id" => $result->user_id,
-    //     "speciality" => $_POST['speciality'],
-    //     "about_member" => $_POST['about_member'],
-    //     "comments" => $_POST['comments'],
-    //     "home_address" => $_POST['home_address'],
-    //     "office_address" => $_POST['office_address'],
-    //     "faculty_affiliation" => $_POST['faculty_affiliation'],
-    //     "phone" => $_POST['phone'],
-    //     "medical_school" => $_POST['medical_school'],
-    //     "state_license" => $_POST['state_license'],
-    // );
-
-    // curl_setopt($ch, CURLOPT_URL, 'https://icircles.app/api/medicalassociation/register');
-    // curl_setopt($ch, CURLOPT_POST, true);
-    // curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($query1));
-    // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    // $response = curl_exec($ch);
-    // $res = json_decode($response);
-    // echo $response;
-    // return;
+        $id = strtotime("now");
+        try {
+            $session = \Stripe\Checkout\Session::create([
+                "client_reference_id" => $id,
+                "payment_method_types" => ["card"],
+                "customer_email" => $_SESSION['reg_email'],
+                "line_items" => [[
+                    "price_data" => [
+                        "currency" => "usd",
+                        "product_data" => [
+                            "name" => $name,
+                        ],
+                        "unit_amount" => $amount,
+                    ],
+                    "quantity" => 1,
+                ]],
+                "mode" => "payment",
+                "success_url" => "http://localhost/bmana/reg_success.php",
+                "cancel_url" => "http://localhost/bmana/cancel.php",
+            ]);
+            $user_reg = array(
+                "id" => $session->id,
+                "ref_id" => $id,
+                "user_id" => $_SESSION['reg_user'],
+                "insert_id" => $res->insert_id
+            );
+            $_SESSION['user_reg'] = $user_reg;
+            header('Location: ' . $session->url);
+        } catch (\Throwable $th) {
+            header('Location: cancel.php?msg=' . $th->getMessage());
+        }
+    }
 }

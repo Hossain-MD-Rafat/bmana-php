@@ -29,6 +29,7 @@ if (isset($payment->payment_status) && $payment->payment_status == 'paid') {
     $response = curl_exec($ch);
     $result = json_decode($response);
     if ($result->status == 1) {
+        unset($_SESSION['donate']);
         header('Location: thankYou.php');
     }
 }
