@@ -6,41 +6,45 @@ require_once("vendor/stripe/stripe-php/init.php");
 
 \Stripe\Stripe::setApiKey("sk_test_4eC39HqLyjWDarjtT1zdp7dc");
 
-print_r($_POST);
-
 if (isset($_POST['donate']) && !is_null($_POST['name']) && !is_null($_POST['email'])) {
-    if (is_numeric($_POST['amount'])) {
-        $nums = explode(".", $_POST['amount']);
-        $int_val = (int)$nums[0];
-        $decimal = (int)$nums[1];
-        $amount = ($int_val * 100) + ($decimal);
-        $customer_name = $_POST['name'];
-        $customer_email = $_POST['email'];
-
-        try {
-            $session = \Stripe\Checkout\Session::create([
-                "client_reference_id" => $customer_name,
-                "payment_method_types" => ["card"],
-                "customer_email" => $customer_email,
-                "line_items" => [[
-                    "price_data" => [
-                        "currency" => "usd",
-                        "product_data" => [
-                            "name" => "premium subscription",
-                        ],
-                        "unit_amount" => $amount,
-                    ],
-                    "quantity" => 1,
-                ]],
-                "mode" => "payment",
-                "success_url" => "http://localhost/bmana/success.php",
-                "cancel_url" => "http://localhost/bmana/cancel.php",
-            ]);
-            $_SESSION['stripe_payment_id'] = $session->id;
-            header('Location: ' . $session->url);
-        } catch (\Throwable $th) {
-            header('Location: cancel.php');
+    try {
+        if (is_numeric($_POST['amount'])) {
+            $nums = explode(".", $_POST['amount']);
+            $int_val = (int)$nums[0];
+            if (count($nums) > 1) {
+                $decimal = (int)$nums[1];
+            } else {
+                $decimal = 0;
+            }
+            $amount = ($int_val * 100) + ($decimal);
         }
+        $session = \Stripe\Checkout\Session::create([
+            "client_reference_id" => $_POST['name'],
+            "payment_method_types" => ["card"],
+            "customer_email" => $_POST['email'],
+            "line_items" => [[
+                "price_data" => [
+                    "currency" => "usd",
+                    "product_data" => [
+                        "name" => "premium subscription",
+                    ],
+                    "unit_amount" => $amount,
+                ],
+                "quantity" => 1,
+            ]],
+            "mode" => "payment",
+            "success_url" => "http://localhost/bmana/success.php",
+            "cancel_url" => "http://localhost/bmana/cancel.php",
+        ]);
+        $donate = array(
+            "name" => $_POST['name'],
+            "email" => $_POST['email'],
+            "id" => $session->id
+        );
+        $_SESSION['donate'] = $donate;
+        header('Location: ' . $session->url);
+    } catch (\Throwable $th) {
+        header('Location: cancel.php?msg=' . $th->getMessage());
     }
 }
 

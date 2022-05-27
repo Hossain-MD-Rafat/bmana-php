@@ -3016,7 +3016,7 @@ text-align: center;
   padding:60px 0 20px 0;
   text-align:center
 }
-.form-1 .form_main .form_body .save_btn a{
+.form-1 .form_main .form_body .save_btn input{
   font-size:18px;
   color:#000;
   background-color:#9a9a9a;
@@ -3026,7 +3026,7 @@ text-align: center;
   border-radius:7px;
   text-transform:uppercase
 }
-.form-1 .form_main .form_body .save_btn a:hover{
+.form-1 .form_main .form_body .save_btn input:hover{
   background-color:#006a4e;
   color:#fff
 }
