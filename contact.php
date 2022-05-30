@@ -78,7 +78,6 @@ curl_close($ch);
                                                             </div>
                                                        </div>
                                                   </form>
-
                                              </div>
                                         </div>
                                    </div>
